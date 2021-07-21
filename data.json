@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Golden Axe",
+    "description": "Golden Axe is a side-scrolling arcade beat 'em up primary \ndeveloper of the gameand also was responsible for the \ncreation of Altered Beast.The game places the player \nin control of one of three warriors each bent on revenge  \nagainst the vile dictator Death Adder.",
+    "rom": "goldenaxe.zip",
+    "bg": "goldenaxe-bg.jpg",
+    "box": "goldenaxe-box.jpg"
+  },
+  {
+    "name": "Mortal Kombat",
+    "description": "Mortal Kombat is an arcade fighting game developed and \npublished by Midway in 1992. It is the first entry in the \nMortal Kombat series and subsequently was released by \nAcclaim Entertainment for nearly every home platform of \nthe time. The game focuses on several characters of \nvarious intentions who enter a martial arts tournament \nwith worldly consequences. It introduced many key aspects \nof the Mortal Kombat series, including the unique five-button \ncontrol scheme and gory finishing moves called Fatalities.",
+    "rom": "mk.zip",
+    "bg": "mk-bg.jpg",
+    "box": "mk-box.jpg"
+  },
+  {
+    "name": "Mortal Kombat II",
+    "description": "Mortal Kombat II is an arcade fighting game developed and \npublished by Midway in 1992. It is the first entry in the \nMortal Kombat series and subsequently was released by \nAcclaim Entertainment for nearly every home platform of \nthe time. The game focuses on several characters of \nvarious intentions who enter a martial arts tournament \nwith worldly consequences. It introduced many key aspects \nof the Mortal Kombat series, including the unique five-button \ncontrol scheme and gory finishing moves called Fatalities.",
+    "rom": "mk.zip",
+    "bg": "mk-bg.jpg",
+    "box": "mk-box.jpg"
+  }
+]
