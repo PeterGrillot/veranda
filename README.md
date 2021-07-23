@@ -1,6 +1,6 @@
 # veranda
 
-A really quick and dirty MAME front end built in C++. You will need MAME set up. Also I built it on linux, so system command would need to be updated for OS.
+A really quick and dirty MAME front end built in C++ and SFML. You will need MAME set up. Also I built it on linux, so system command would need to be updated for OS.
 
 ## Deps
 
@@ -16,5 +16,5 @@ sfml-system
 
 ``` bash
 chmod +x ./compiler.sh
-./compilersh
+./compiler.sh
 ```
