@@ -201,25 +201,26 @@ int main()
       if (event.type == sf::Event::Closed)
         window.close();
       // Next: Right
-      if (
-          event.type == sf::Event::KeyReleased &&
-          event.key.code == sf::Keyboard::Right &&
-          animationDirection == None &&
-          pageNumber < pageSize)
+      if (event.joystickMove.axis == sf::Joystick::X)
       {
-        animationDirection = Right;
-        pageNumber++;
-      }
-      // Prev: Left
-      if (
-          event.type == sf::Event::KeyReleased &&
-          event.key.code == sf::Keyboard::Left &&
-          animationDirection == None &&
-          pageNumber > 0)
-      {
-        animationDirection = Left;
-        pageNumber--;
-      }
+          if (
+          	event.joystickMove.position == 100 &&
+          	animationDirection == None &&
+          	pageNumber < pageSize)
+      	{
+        	animationDirection = Right;
+        	pageNumber++;
+      	}
+      	// Prev: Left
+      	if (
+          	event.joystickMove.position == -100 &&
+          	animationDirection == None &&
+          	pageNumber > 0)
+      	{
+        	animationDirection = Left;
+        	pageNumber--;
+      	}
+      	}
     }
 
     // Set up and draw

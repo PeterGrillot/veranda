@@ -10,24 +10,31 @@
   {
     "title": "Golden Axe",
     "description": "Golden Axe is a side-scrolling arcade beat 'em up game released in 1989 by Sega. Makoto Uchida was the primary developer of the game and also was responsible for the creation of Altered Beast.The game places the player in control of one of three warriors each bent on revenge against the vile dictator Death Adder.",
-    "rom": "goldenaxeq.zip",
+    "rom": "goldnaxe.zip",
     "bg": "goldenaxe-bg.jpg",
     "logo": "goldenaxe-logo.png",
     "box": "goldenaxe-box.jpg"
   },
   {
-    "title": "Stret Fighter II",
+    "title": "Street Fighter II",
     "description": "Street Fighter II, is a competitive fighting game developed by Capcom and originally released for arcade systems in 1991. It is the second installment in the Street Fighter series and the sequel to Street Fighter, released in 1987",
     "rom": "sf2.zip",
     "bg": "sf2-bg.jpg",
     "box": "sf2-box.jpg",
     "logo": "sf2-logo.png"
   },
-  {
+    {
     "title": "Mortal Kombat",
     "description": "Mortal Kombat is an arcade fighting game developed and published by Midway in 1992. The game focuses on several characters of various intentions who enter a martial arts tournament with worldly consequences. It introduced many key aspects of the Mortal Kombat series, including the unique five-button control scheme and gory finishing moves called Fatalities.",
-    "rom": "mk.zip",
+    "rom": "mkla1.zip",
     "logo": "mk-logo.png",
+    "bg": "mk-bg.jpg",
+    "box": "mk-box.jpg"
+  },
+  {
+    "title": "Mortal Kombat II",
+    "description": "Mortal Kombat II is an arcade fighting game developed and published by Midway in 1992. The game focuses on several characters of various intentions who enter a martial arts tournament with worldly consequences. It introduced many key aspects of the Mortal Kombat series, including the unique five-button control scheme and gory finishing moves called Fatalities.",
+    "rom": "mk2.zip",
     "bg": "mk-bg.jpg",
     "box": "mk-box.jpg"
   },
@@ -42,7 +49,7 @@
   {
     "title": "TMNT: Turtles in Time",
     "description": "Teenage Mutant Ninja Turtles: Turtles in Time, released as Teenage Mutant Hero Turtles: Turtles in Time in Europe, is an arcade video game produced by Konami. A sequel to the original Teenage Mutant Ninja Turtles arcade game, it is a scrolling beat 'em up type game based mainly on the 1987 TMNT animated.",
-    "rom": "tmnttit.zip",
+    "rom": "tmht22pe.zip",
     "bg": "tmnttit-bg.jpg",
     "box": "tmnttit-box.jpg",
     "logo": "tmnttit-logo.png"
@@ -50,7 +57,7 @@
   {
     "title": "X-MEN",
     "description": "X-Men  is a side-scrolling beat 'em up game produced and released by Konami for arcades in 1992, based on the Marvel Comics superhero team of the same name. The character designs of the characters in the game are based on the 1989 cartoon X-Men: Pryde of the X-Men. In the game, up to six players control the X-Men to defeat their archenemy Magneto.",
-    "rom": "xmen.zip",
+    "rom": "xmen2pa.zip",
     "bg": "xmen-bg.jpg",
     "box": "xmen-box.jpg",
     "logo": "xmen-logo.png"
