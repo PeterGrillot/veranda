@@ -35,8 +35,9 @@
     "title": "Mortal Kombat II",
     "description": "Mortal Kombat II is an arcade fighting game developed and published by Midway in 1992. The game focuses on several characters of various intentions who enter a martial arts tournament with worldly consequences. It introduced many key aspects of the Mortal Kombat series, including the unique five-button control scheme and gory finishing moves called Fatalities.",
     "rom": "mk2.zip",
-    "bg": "mk-bg.jpg",
-    "box": "mk-box.jpg"
+    "bg": "mk2-bg.jpg",
+    "box": "mk2-box.jpg",
+    "logo": "mk2-logo.png"
   },
   {
     "title": "TMNT",
@@ -61,5 +62,29 @@
     "bg": "xmen-bg.jpg",
     "box": "xmen-box.jpg",
     "logo": "xmen-logo.png"
+  },
+  {
+    "title": "X-MEN: COA",
+    "description": "X-Men: Children of the Atom is an arcade game that was produced by Capcom and released on the CP System II arcade hardware in 1994 in Japan and in 1995 in North America and Europe. Based on the X-Men comic book, it is the first fighting game produced by Capcom using characters under license from Marvel Comics.",
+    "rom": "xmcotar1.zip",
+    "bg": "xmcotar1-bg.jpg",
+    "box": "xmcotar1-box.jpg",
+    "logo": "xmcotar1-logo.png"
+  },
+  {
+    "title": "Marvel vs. Capcom",
+    "description": "Marvel vs. Capcom is a series of crossover fighting games developed and published by Capcom, featuring characters from their own video game franchises and comic book series published by Marvel Comics. The series originated as coin-operated arcade games, though later releases would be specifically developed for home consoles, handhelds, and personal computers.",
+    "rom": "mvcu.zip",
+    "bg": "mvcu-bg.jpg",
+    "box": "mvcu-box.jpg",
+    "logo": "mvcu-logo.png"
+  },
+  {
+    "title": "Bubble Bobble",
+    "description": "Bubble Bobble is a 1986 platform arcade game developed and published by Taito. It was distributed in the United States by Romstar, and in Europe by Electrocoin. Players control Bub and Bob, two dragons that set out to save their girlfriends from a world known as the Cave of Monsters.",
+    "rom": "bubbob.zip",
+    "bg": "bubbob-bg.jpg",
+    "box": "bubbob-box.jpg",
+    "logo": "bubbob-logo.png"
   }
 ]
