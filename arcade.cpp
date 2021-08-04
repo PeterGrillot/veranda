@@ -44,12 +44,13 @@ int main()
   {
     Left,
     Right,
+    Full,
     None
   };
   int animationDirection = None;
 
   // Color
-  sf::Color darkGreyColor = sf::Color(23, 23, 23, 255);
+  sf::Color darkGreyColor = sf::Color(0, 0, 0, 255);
 
   //Declare a Font object
   sf::Font font;
@@ -182,18 +183,25 @@ int main()
     instructions.setString(instructionsText);
 
     // Animate Direction
-    fadeRectangle[pageNumber].setFillColor(sf::Color(23, 23, 23, -1 * alpha));
+    fadeRectangle[pageNumber].setFillColor(sf::Color(0, 0, 0, -1 * alpha));
     if (animationDirection == Right && frame < frameRate)
     {
       mainView.move(screenWidth / frameRate, 0);
-      fadeRectangle[pageNumber - 1].setFillColor(sf::Color(23, 23, 23, alpha));
+      fadeRectangle[pageNumber - 1].setFillColor(sf::Color(0, 0, 0, alpha));
       frame++;
     }
     else if (animationDirection == Left && frame < frameRate)
     {
       mainView.move(-screenWidth / frameRate, 0);
-      fadeRectangle[pageNumber + 1].setFillColor(sf::Color(23, 23, 23, alpha));
+      fadeRectangle[pageNumber + 1].setFillColor(sf::Color(0, 0, 0, alpha));
       frame++;
+    }
+    else if (animationDirection == Full)
+    {
+      mainView.move(screenWidth * pageNumber, 0);
+      fadeRectangle[pageNumber].setFillColor(sf::Color(0, 0, 0, 255));
+      frame = 0;
+      animationDirection = None;
     }
     else
     {
@@ -226,18 +234,26 @@ int main()
       // Prev: Left
       if (
           joystickLeft &&
-          animationDirection == None &&
-          pageNumber > 0)
+          animationDirection == None)
       {
-        animationDirection = Left;
-        pageNumber--;
+        if (pageNumber > 0)
+        {
+
+          animationDirection = Left;
+          pageNumber--;
+        }
+        else
+        {
+          animationDirection = Full;
+          pageNumber = pageSize;
+        }
       }
       // Open
       if (event.joystickButton.button == 0)
       {
       }
       // Run roms
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) || selectButtonPressed)
       {
         string currentRom = "mame " + obj[pageNumber]["rom"].asString();
         const char *command = currentRom.c_str();
@@ -273,12 +289,14 @@ int main()
     window.display();
 
     // DEV
-    const std::vector<sf::VideoMode> videoModesCount = sf::VideoMode::getFullscreenModes();
-    for (unsigned int i = 0; i < videoModesCount.size(); ++i)
-    {
-      // Mode is a valid video mode
-      std::cout << videoModesCount[i].height << " is valid" << std::endl;
-    }
+    cout << sf::Joystick::isButtonPressed(0, 1) << endl;
+    cout << sf::Joystick::isButtonPressed(1, 1) << endl;
+    // const std::vector<sf::VideoMode> videoModesCount = sf::VideoMode::getFullscreenModes();
+    // for (unsigned int i = 0; i < videoModesCount.size(); ++i)
+    // {
+    //   // Mode is a valid video mode
+    //   std::cout << videoModesCount[i].height << " is valid" << std::endl;
+    // }
   }
 
   return 0;
