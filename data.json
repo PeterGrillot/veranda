@@ -1,11 +1,26 @@
 [
   {
+    "title": "X-MEN",
+    "description": "X-Men  is a side-scrolling beat 'em up game produced and released by Konami for arcades in 1992, based on the Marvel Comics superhero team of the same name. The character designs of the characters in the game are based on the 1989 cartoon X-Men: Pryde of the X-Men. In the game, up to six players control the X-Men to defeat their archenemy Magneto.",
+    "rom": "xmen2pa",
+    "bg": "xmen-bg.jpg",
+    "box": "xmen-box.jpg",
+    "logo": "xmen-logo.png"
+  },
+  {
     "title": "NBA JAM",
     "description": "NBA Jam is a long-running basketball video game series based on the National Basketball Association. Initially developed as arcade games by Midway, the game found popularity with its photo realistic digitized graphics, over-the-top presentation and style of two-on-two basketball play. Boomshakkalakka!",
     "rom": "nbajam",
     "bg": "nbajam-bg.jpg",
     "box": "nbajam-box.jpg",
     "logo": "nbajam-logo.png"
+  },  {
+    "title": "NBA JAM",
+    "description": "NBA Jam is a long-running basketball video game series based on the National Basketball Association. Initially developed as arcade games by Midway, the game found popularity with its photo realistic digitized graphics, over-the-top presentation and style of two-on-two basketball play. Boomshakkalakka!",
+    "rom": "nbajamr2",
+    "bg": "nbajam-bg.jpg",
+    "box": "nbajam-box.jpg",
+    "logo": "nbajamr2-logo.png"
   },
   {
     "title": "Golden Axe",
@@ -54,14 +69,6 @@
     "bg": "tmnttit-bg.jpg",
     "box": "tmnttit-box.jpg",
     "logo": "tmnttit-logo.png"
-  },
-  {
-    "title": "X-MEN",
-    "description": "X-Men  is a side-scrolling beat 'em up game produced and released by Konami for arcades in 1992, based on the Marvel Comics superhero team of the same name. The character designs of the characters in the game are based on the 1989 cartoon X-Men: Pryde of the X-Men. In the game, up to six players control the X-Men to defeat their archenemy Magneto.",
-    "rom": "xmen2pa",
-    "bg": "xmen-bg.jpg",
-    "box": "xmen-box.jpg",
-    "logo": "xmen-logo.png"
   },
   {
     "title": "X-MEN: COA",
