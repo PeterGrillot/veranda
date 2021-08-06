@@ -23,7 +23,7 @@ int main()
   const float screenWidth = 2560;
   const float screenHeight = 1440;
   const int frameRate = 60;
-  window.setFramerateLimit(frameRate);
+  window.setFramerateLimit(frameRate * 2);
   window.setKeyRepeatEnabled(false);
 
   // JSON

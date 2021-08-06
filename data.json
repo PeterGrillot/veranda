@@ -1,129 +1,154 @@
 [
-  {
-    "title": "X-MEN",
-    "description": "X-Men  is a side-scrolling beat 'em up game produced and released by Konami for arcades in 1992, based on the Marvel Comics superhero team of the same name. The character designs of the characters in the game are based on the 1989 cartoon X-Men: Pryde of the X-Men. In the game, up to six players control the X-Men to defeat their archenemy Magneto.",
-    "rom": "xmen2pa",
-    "bg": "xmen-bg.jpg",
-    "box": "xmen-box.jpg",
-    "logo": "xmen-logo.png"
-  },
-  {
-    "title": "NBA JAM",
-    "description": "NBA Jam is a long-running basketball video game series based on the National Basketball Association. Initially developed as arcade games by Midway, the game found popularity with its photo realistic digitized graphics, over-the-top presentation and style of two-on-two basketball play. Boomshakkalakka!",
-    "rom": "nbajam",
-    "bg": "nbajam-bg.jpg",
-    "box": "nbajam-box.jpg",
-    "logo": "nbajam-logo.png"
-  },  {
-    "title": "NBA JAM",
-    "description": "NBA Jam is a long-running basketball video game series based on the National Basketball Association. Initially developed as arcade games by Midway, the game found popularity with its photo realistic digitized graphics, over-the-top presentation and style of two-on-two basketball play. Boomshakkalakka!",
-    "rom": "nbajamr2",
-    "bg": "nbajam-bg.jpg",
-    "box": "nbajam-box.jpg",
-    "logo": "nbajamr2-logo.png"
-  },
-  {
-    "title": "Golden Axe",
-    "description": "Golden Axe is a side-scrolling arcade beat 'em up game released in 1989 by Sega. Makoto Uchida was the primary developer of the game and also was responsible for the creation of Altered Beast.The game places the player in control of one of three warriors each bent on revenge against the vile dictator Death Adder.",
-    "rom": "goldnaxe1",
-    "bg": "goldenaxe-bg.jpg",
-    "logo": "goldenaxe-logo.png",
-    "box": "goldenaxe-box.jpg"
-  },
-  {
-    "title": "Street Fighter II",
-    "description": "Street Fighter II, is a competitive fighting game developed by Capcom and originally released for arcade systems in 1991. It is the second installment in the Street Fighter series and the sequel to Street Fighter, released in 1987",
-    "rom": "sf2ce",
-    "bg": "sf2-bg.jpg",
-    "box": "sf2-box.jpg",
-    "logo": "sf2-logo.png"
-  },
     {
-    "title": "Mortal Kombat",
-    "description": "Mortal Kombat is an arcade fighting game developed and published by Midway in 1992. The game focuses on several characters of various intentions who enter a martial arts tournament with worldly consequences. It introduced many key aspects of the Mortal Kombat series, including the unique five-button control scheme and gory finishing moves called Fatalities.",
-    "rom": "mkla1",
-    "logo": "mk-logo.png",
-    "bg": "mk-bg.jpg",
-    "box": "mk-box.jpg"
-  },
-  {
-    "title": "Mortal Kombat II",
-    "description": "Mortal Kombat II is an arcade fighting game developed and published by Midway in 1992. The game focuses on several characters of various intentions who enter a martial arts tournament with worldly consequences. It introduced many key aspects of the Mortal Kombat series, including the unique five-button control scheme and gory finishing moves called Fatalities.",
-    "rom": "mk2",
-    "bg": "mk2-bg.jpg",
-    "box": "mk2-box.jpg",
-    "logo": "mk2-logo.png"
-  },
-  {
-    "title": "TMNT",
-    "description": "Teenage Mutant Ninja Turtles: Turtles in Time, released as Teenage Mutant Hero Turtles: Turtles in Time in Europe, is an arcade video game produced by Konami. A sequel to the original Teenage Mutant Ninja Turtles arcade game, it is a scrolling beat 'em up type game based mainly on the 1987 TMNT animated.",
-    "rom": "tmnt2po",
-    "bg": "tmnt-bg.jpg",
-    "box": "tmnt-box.jpg",
-    "logo": "tmnt-logo.png"
-  },
-  {
-    "title": "TMNT: Turtles in Time",
-    "description": "Teenage Mutant Ninja Turtles: Turtles in Time, released as Teenage Mutant Hero Turtles: Turtles in Time in Europe, is an arcade video game produced by Konami. A sequel to the original Teenage Mutant Ninja Turtles arcade game, it is a scrolling beat 'em up type game based mainly on the 1987 TMNT animated.",
-    "rom": "tmht22pe",
-    "bg": "tmnttit-bg.jpg",
-    "box": "tmnttit-box.jpg",
-    "logo": "tmnttit-logo.png"
-  },
-  {
-    "title": "X-MEN: COA",
-    "description": "X-Men: Children of the Atom is an arcade game that was produced by Capcom and released on the CP System II arcade hardware in 1994 in Japan and in 1995 in North America and Europe. Based on the X-Men comic book, it is the first fighting game produced by Capcom using characters under license from Marvel Comics.",
-    "rom": "xmcota",
-    "bg": "xmcotar1-bg.jpg",
-    "box": "xmcotar1-box.jpg",
-    "logo": "xmcotar1-logo.png"
-  },
-  {
-    "title": "Marvel vs. Capcom",
-    "description": "Marvel vs. Capcom is a series of crossover fighting games developed and published by Capcom, featuring characters from their own video game franchises and comic book series published by Marvel Comics. The series originated as coin-operated arcade games, though later releases would be specifically developed for home consoles, handhelds, and personal computers.",
-    "rom": "mvscu",
-    "bg": "mvcu-bg.jpg",
-    "box": "mvcu-box.jpg",
-    "logo": "mvcu-logo.png"
-  },
-  {
-    "title": "Tekken 3",
-    "description": "Tekken 3 is a fighting game, the third entry in the Tekken series. It was released in arcades in March 1997, and for the PlayStation in 1998. The original arcade version of the game was released in 2005 for the PlayStation 2 as part of Tekken 5's Arcade History mode.",
-    "rom": "tekken3ua",
-    "bg": "tekken3-bg.jpg",
-    "box": "tekken3-box.jpg",
-    "logo": "tekken3-logo.png"
-  },
-  {
-    "title": "Tekken Tag",
-    "description": "Tekken Tag Tournament is a spin-off of the Namco's Tekken fighting game series. It is the fourth installment in the Tekken fighting game series. Tekken Tag Tournament was released as an arcade game in 1999 before becoming a North American and European launch title for the PlayStation 2 in 2000.",
-    "rom": "tektagt",
-    "bg": "tektagt-bg.jpg",
-    "box": "tektagt-box.jpg",
-    "logo": "tektagt-logo.png"
-  },
-  {
-    "title": "Ridge Racer",
-    "description": "Ridge Racer is a racing video game series developed and published for arcade systems and home game consoles by Bandai Namco Entertainment, formerly Namco. The first game, Ridge Racer, was originally released in arcades for the Namco System 22 hardware, later ported to the PlayStation two years later as a launch title.",
-    "rom": "ridgerac",
-    "bg": "ridgerac-bg.jpg",
-    "box": "ridgerac-box.jpg",
-    "logo": "ridgerac-logo.png"
-  },
-  {
-    "title": "Bubble Bobble",
-    "description": "Bubble Bobble is a 1986 platform arcade game developed and published by Taito. It was distributed in the United States by Romstar, and in Europe by Electrocoin. Players control Bub and Bob, two dragons that set out to save their girlfriends from a world known as the Cave of Monsters.",
-    "rom": "bbredux",
-    "bg": "bubbob-bg.jpg",
-    "box": "bubbob-box.jpg",
-    "logo": "bubbob-logo.png"
-  },
-  {
-    "title": "R-Type",
-    "description": "R-Type is a side-scrolling shooter arcade video game developed and released by Irem in 1987. The player controls a star ship, the R-9 \"Arrowhead\", in its efforts to destroy the Bydo, a powerful alien race bent on wiping out all of mankind.",
-    "rom": "rtype",
-    "bg": "rtype-bg.jpg",
-    "box": "rtype-box.jpg",
-    "logo": "rtype-logo.png"
-  }
+        "title": "Donkey Kong",
+        "description": "Donkey Kong is an arcade platform game announced by Nintendo in Japan on July 9, 1981 and released on mid-July, 1981, then in North America later that month and Europe later that year. Its gameplay maneuvers Mario across platforms to ascend a construction site and rescue Pauline from the giant gorilla named Donkey Kong, all while avoiding or jumping over obstacles.",
+        "rom": "dkonghrd",
+        "bg": "dk-bg.jpg",
+        "box": "dk-box.jpg",
+        "logo": "dk-logo.png"
+    },
+    {
+        "title": "Ms. Pacman",
+        "description": "Ms. Pac-Man is a 1982 maze arcade game developed by General Computer Corporation and published by Midway. It is the first sequel to Pac-Man, and the first entry in the series to not be made by Namco. Controlling the titular character, the player is tasked with eating all of the pellets in an enclosed maze while avoiding four colored ghosts.",
+        "rom": "mspacman",
+        "bg": "mspacman-bg.jpg",
+        "box": "mspacman-box.png",
+        "logo": "mspacman-logo.png"
+    },
+    {
+        "title": "Bubble Bobble",
+        "description": "Bubble Bobble is a 1986 platform arcade game developed and published by Taito. It was distributed in the United States by Romstar, and in Europe by Electrocoin. Players control Bub and Bob, two dragons that set out to save their girlfriends from a world known as the Cave of Monsters.",
+        "rom": "bbredux",
+        "bg": "bubbob-bg.jpg",
+        "box": "bubbob-box.jpg",
+        "logo": "bubbob-logo.png"
+    },
+    {
+        "title": "R-Type",
+        "description": "R-Type is a side-scrolling shooter arcade video game developed and released by Irem in 1987. The player controls a star ship, the R-9 \"Arrowhead\", in its efforts to destroy the Bydo, a powerful alien race bent on wiping out all of mankind.",
+        "rom": "rtype",
+        "bg": "rtype-bg.jpg",
+        "box": "rtype-box.jpg",
+        "logo": "rtype-logo.png"
+    },
+    {
+        "title": "NBA JAM",
+        "description": "NBA Jam is a long-running basketball video game series based on the National Basketball Association. Initially developed as arcade games by Midway, the game found popularity with its photo realistic digitized graphics, over-the-top presentation and style of two-on-two basketball play. Boomshakkalakka!",
+        "rom": "nbajam",
+        "bg": "nbajam-bg.jpg",
+        "box": "nbajam-box.jpg",
+        "logo": "nbajam-logo.png"
+    },
+    {
+        "title": "NBA JAM",
+        "description": "NBA Jam is a long-running basketball video game series based on the National Basketball Association. Initially developed as arcade games by Midway, the game found popularity with its photo realistic digitized graphics, over-the-top presentation and style of two-on-two basketball play. Boomshakkalakka!",
+        "rom": "nbajamr2",
+        "bg": "nbajam-bg.jpg",
+        "box": "nbajam-box.jpg",
+        "logo": "nbajamr2-logo.png"
+    },
+    {
+        "title": "Golden Axe",
+        "description": "Golden Axe is a side-scrolling arcade beat 'em up game released in 1989 by Sega. Makoto Uchida was the primary developer of the game and also was responsible for the creation of Altered Beast.The game places the player in control of one of three warriors each bent on revenge against the vile dictator Death Adder.",
+        "rom": "goldnaxe1",
+        "bg": "goldenaxe-bg.jpg",
+        "logo": "goldenaxe-logo.png",
+        "box": "goldenaxe-box.jpg"
+    },
+    {
+        "title": "Street Fighter II",
+        "description": "Street Fighter II, is a competitive fighting game developed by Capcom and originally released for arcade systems in 1991. It is the second installment in the Street Fighter series and the sequel to Street Fighter, released in 1987",
+        "rom": "sf2ce",
+        "bg": "sf2-bg.jpg",
+        "box": "sf2-box.jpg",
+        "logo": "sf2-logo.png"
+    },
+    {
+        "title": "Mortal Kombat",
+        "description": "Mortal Kombat is an arcade fighting game developed and published by Midway in 1992. The game focuses on several characters of various intentions who enter a martial arts tournament with worldly consequences. It introduced many key aspects of the Mortal Kombat series, including the unique five-button control scheme and gory finishing moves called Fatalities.",
+        "rom": "mkla1",
+        "logo": "mk-logo.png",
+        "bg": "mk-bg.jpg",
+        "box": "mk-box.jpg"
+    },
+    {
+        "title": "Mortal Kombat II",
+        "description": "Mortal Kombat II is an arcade fighting game developed and published by Midway in 1992. The game focuses on several characters of various intentions who enter a martial arts tournament with worldly consequences. It introduced many key aspects of the Mortal Kombat series, including the unique five-button control scheme and gory finishing moves called Fatalities.",
+        "rom": "mk2",
+        "bg": "mk2-bg.jpg",
+        "box": "mk2-box.jpg",
+        "logo": "mk2-logo.png"
+    },
+    {
+        "title": "Mortal Kombat 3",
+        "description": "Mortal Kombat 3 is a fighting video game developed by Midway / Atari Games and first released into arcades in 1995. It is the third entry in the Mortal Kombat series and is the sequel to Mortal Kombat II. As in the previous games, it has a cast of characters that players choose from and guide through a series of battles against other opponents.",
+        "rom": "umk3",
+        "bg": "umk3-bg.jpg",
+        "box": "umk3-box.png",
+        "logo": "umk3-logo.png"
+    },
+    {
+        "title": "TMNT",
+        "description": "Teenage Mutant Ninja Turtles: Turtles in Time, released as Teenage Mutant Hero Turtles: Turtles in Time in Europe, is an arcade video game produced by Konami. A sequel to the original Teenage Mutant Ninja Turtles arcade game, it is a scrolling beat 'em up type game based mainly on the 1987 TMNT animated.",
+        "rom": "tmnt2po",
+        "bg": "tmnt-bg.jpg",
+        "box": "tmnt-box.jpg",
+        "logo": "tmnt-logo.png"
+    },
+    {
+        "title": "TMNT: Turtles in Time",
+        "description": "Teenage Mutant Ninja Turtles: Turtles in Time, released as Teenage Mutant Hero Turtles: Turtles in Time in Europe, is an arcade video game produced by Konami. A sequel to the original Teenage Mutant Ninja Turtles arcade game, it is a scrolling beat 'em up type game based mainly on the 1987 TMNT animated.",
+        "rom": "tmht22pe",
+        "bg": "tmnttit-bg.jpg",
+        "box": "tmnttit-box.jpg",
+        "logo": "tmnttit-logo.png"
+    },
+    {
+        "title": "X-MEN",
+        "description": "X-Men  is a side-scrolling beat 'em up game produced and released by Konami for arcades in 1992, based on the Marvel Comics superhero team of the same name. The character designs of the characters in the game are based on the 1989 cartoon X-Men: Pryde of the X-Men. In the game, up to six players control the X-Men to defeat their archenemy Magneto.",
+        "rom": "xmen2pa",
+        "bg": "xmen-bg.jpg",
+        "box": "xmen-box.jpg",
+        "logo": "xmen-logo.png"
+    },
+    {
+        "title": "X-MEN: COA",
+        "description": "X-Men: Children of the Atom is an arcade game that was produced by Capcom and released on the CP System II arcade hardware in 1994 in Japan and in 1995 in North America and Europe. Based on the X-Men comic book, it is the first fighting game produced by Capcom using characters under license from Marvel Comics.",
+        "rom": "xmcota",
+        "bg": "xmcotar1-bg.jpg",
+        "box": "xmcotar1-box.jpg",
+        "logo": "xmcotar1-logo.png"
+    },
+    {
+        "title": "Marvel vs. Capcom",
+        "description": "Marvel vs. Capcom is a series of crossover fighting games developed and published by Capcom, featuring characters from their own video game franchises and comic book series published by Marvel Comics. The series originated as coin-operated arcade games, though later releases would be specifically developed for home consoles, handhelds, and personal computers.",
+        "rom": "mvscu",
+        "bg": "mvcu-bg.jpg",
+        "box": "mvcu-box.jpg",
+        "logo": "mvcu-logo.png"
+    },
+    {
+        "title": "Ridge Racer",
+        "description": "Ridge Racer is a racing video game series developed and published for arcade systems and home game consoles by Bandai Namco Entertainment, formerly Namco. The first game, Ridge Racer, was originally released in arcades for the Namco System 22 hardware, later ported to the PlayStation two years later as a launch title.",
+        "rom": "ridgerac",
+        "bg": "ridgerac-bg.jpg",
+        "box": "ridgerac-box.jpg",
+        "logo": "ridgerac-logo.png"
+    },
+    {
+        "title": "Tekken 3",
+        "description": "Tekken 3 is a fighting game, the third entry in the Tekken series. It was released in arcades in March 1997, and for the PlayStation in 1998. The original arcade version of the game was released in 2005 for the PlayStation 2 as part of Tekken 5's Arcade History mode.",
+        "rom": "tekken3ua",
+        "bg": "tekken3-bg.jpg",
+        "box": "tekken3-box.jpg",
+        "logo": "tekken3-logo.png"
+    },
+    {
+        "title": "Tekken Tag",
+        "description": "Tekken Tag Tournament is a spin-off of the Namco's Tekken fighting game series. It is the fourth installment in the Tekken fighting game series. Tekken Tag Tournament was released as an arcade game in 1999 before becoming a North American and European launch title for the PlayStation 2 in 2000.",
+        "rom": "tektagt",
+        "bg": "tektagt-bg.jpg",
+        "box": "tektagt-box.jpg",
+        "logo": "tektagt-logo.png"
+    }
 ]
