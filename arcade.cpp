@@ -23,7 +23,7 @@ int main()
   const float screenWidth = 2560;
   const float screenHeight = 1440;
   const int frameRate = 60;
-  window.setFramerateLimit(frameRate);
+  window.setFramerateLimit(frameRate * 2);
   window.setKeyRepeatEnabled(false);
 
   // JSON
@@ -289,8 +289,43 @@ int main()
     window.display();
 
     // DEV
-    cout << sf::Joystick::isButtonPressed(0, 1) << endl;
-    cout << sf::Joystick::isButtonPressed(1, 1) << endl;
+    if (sf::Joystick::isButtonPressed(0, 1))
+    {
+      cout << "button 1 pressed" << endl;
+    }
+    if (sf::Joystick::isButtonPressed(0, 1))
+    {
+      cout << "button 1 pressed" << endl;
+    }
+    if (sf::Joystick::isButtonPressed(0, 2))
+    {
+      cout << "button 2 pressed" << endl;
+    }
+    if (sf::Joystick::isButtonPressed(0, 3))
+    {
+      cout << "button 3 pressed" << endl;
+    }
+    if (sf::Joystick::isButtonPressed(0, 4))
+    {
+      cout << "button 4 pressed" << endl;
+    }
+    if (sf::Joystick::isButtonPressed(0, 5))
+    {
+      cout << "button 5 pressed" << endl;
+    }
+    if (sf::Joystick::isButtonPressed(0, 6))
+    {
+      cout << "button 6 pressed" << endl;
+    }
+    if (sf::Joystick::isButtonPressed(0, 7))
+    {
+      cout << "button 6 pressed" << endl;
+    }
+    if (sf::Joystick::isButtonPressed(0, 8))
+    {
+      cout << "button 6 pressed" << endl;
+    }
+
     // const std::vector<sf::VideoMode> videoModesCount = sf::VideoMode::getFullscreenModes();
     // for (unsigned int i = 0; i < videoModesCount.size(); ++i)
     // {
