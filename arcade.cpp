@@ -26,6 +26,10 @@ int main()
   window.setFramerateLimit(frameRate * 2);
   window.setKeyRepeatEnabled(false);
 
+  // Timer
+  int timer = 0;
+  int timeout = 1200; // 20 seconds
+
   // JSON
   ifstream ifs("data.json");
   Json::Reader reader;
@@ -230,6 +234,7 @@ int main()
       {
         animationDirection = Right;
         pageNumber++;
+        timeout = 2400;
       }
       // Prev: Left
       if (
@@ -241,6 +246,7 @@ int main()
 
           animationDirection = Left;
           pageNumber--;
+          timeout = 2400;
         }
         else
         {
@@ -287,6 +293,16 @@ int main()
     window.setView(guiView);
     window.draw(instructions);
     window.display();
+
+    // Timer
+    timer++;
+    if (timer == timeout)
+    {
+      timer = 0;
+      timeout = 1200;
+      animationDirection = Right;
+      pageNumber++;
+    }
 
     // DEV
     if (sf::Joystick::isButtonPressed(0, 1))
