@@ -34,7 +34,7 @@
     {
         "title": "NBA JAM",
         "description": "NBA Jam is a long-running basketball video game series based on the National Basketball Association. Initially developed as arcade games by Midway, the game found popularity with its photo realistic digitized graphics, over-the-top presentation and style of two-on-two basketball play. Boomshakkalakka!",
-        "rom": "nbajam",
+        "rom": "nbajamr2",
         "bg": "nbajam-bg.jpg",
         "box": "nbajam-box.jpg",
         "logo": "nbajam-logo.png"
@@ -42,7 +42,7 @@
     {
         "title": "NBA JAM",
         "description": "NBA Jam is a long-running basketball video game series based on the National Basketball Association. Initially developed as arcade games by Midway, the game found popularity with its photo realistic digitized graphics, over-the-top presentation and style of two-on-two basketball play. Boomshakkalakka!",
-        "rom": "nbajamr2",
+        "rom": "nbajam",
         "bg": "nbajam-bg.jpg",
         "box": "nbajam-box.jpg",
         "logo": "nbajamr2-logo.png"
