@@ -220,6 +220,7 @@ int main()
       bool joystickDown = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
       bool selectButtonPressed = sf::Joystick::isButtonPressed(0, 1) || sf::Joystick::isButtonPressed(1, 1);
       // Next: Down => 100
+      cout << event.joystickMove.position << endl;
       if (
         joystickDown &&
         animationDirection == None)
@@ -252,11 +253,11 @@ int main()
       }
 
       // Open
-      if (event.joystickButton.button == 0)
-      {
-      }
-      // Run roms
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) || selectButtonPressed)
+      if (sf::Joystick::isButtonPressed(0, 1) ||
+        sf::Joystick::isButtonPressed(0, 2) ||
+        sf::Joystick::isButtonPressed(1, 1) ||
+        sf::Joystick::isButtonPressed(1, 2)
+        )
       {
         string currentRom = "mame " + obj[pageNumber]["rom"].asString();
         const char* command = currentRom.c_str();
