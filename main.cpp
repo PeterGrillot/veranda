@@ -6,7 +6,6 @@
 #include <thread>
 
 #define FONT_FILENAME "RobotoCondensed-Regular.ttf"
-#define NO_VALUE "NO_VALUE"
 
 using namespace std;
 using namespace chrono;
@@ -19,14 +18,14 @@ int main()
   sf::RenderWindow window(sf::VideoMode(2560, 1440), "Veranda");
   const float screenWidth = 2560;
   const float screenHeight = 1440;
-  const float boxHeight = screenHeight / 4;
+  const int boxPerPage = 4;
+  const float boxHeight = screenHeight / boxPerPage;
   const int frameRate = 60;
   window.setFramerateLimit(frameRate * 3);
   window.setKeyRepeatEnabled(false);
 
   // Timer
   int timer = 0;
-  int timeout = 1200; // 20 seconds
 
   // JSON
   ifstream ifs("data.json");
@@ -44,11 +43,10 @@ int main()
   int frame = 0;
   enum Direction
   {
-    Left,
-    Right,
     Up,
     Down,
-    Full,
+    FullUp,
+    FullDown,
     None
   };
   int animationDirection = None;
@@ -122,8 +120,6 @@ int main()
     string logoPath = "assets/" + obj[index]["logo"].asString();
     if (!logoTexture[i].loadFromFile(logoPath))
       return -1;
-    titleText[i].setFont(font);
-    titleText[i].setString(NO_VALUE);
     logoTexture[i].setSmooth(true);
     logoSprite[i].setTexture(logoTexture[i]);
 
@@ -171,28 +167,30 @@ int main()
   while (window.isOpen())
   {
     sf::Event event;
-    float alpha = 4.2 * frame;
 
     // Build GUI
     string instructionsText = "Up/Down to Cycle >> Press any buttons to select >> " + to_string(pageNumber + 1) + " of " + to_string(pageSize + 1);
     instructions.setString(instructionsText);
 
     // Animate Direction
+    // Up
     if (animationDirection == Up && frame < frameRate)
     {
       highlightRect.move(0, -1 * (boxHeight / frameRate));
-
-      if (pageNumber != pageSize)
-      {
-        cout << "mv" << endl;
-      }
-
       if (pageNumber != 0 && pageNumber != (pageSize - 1) && pageNumber != (pageSize - 2))
       {
         mainView.move(0, -1 * boxHeight / frameRate);
       }
       frame++;
     }
+    // Full Up
+    else if (animationDirection == FullUp && frame < frameRate)
+    {
+      highlightRect.move(0, -1 * (boxHeight * pageSize) / frameRate);
+      mainView.move(0, -1 * (boxHeight * (pageSize - 3)) / frameRate);
+      frame++;
+    }
+    // Down
     else if (animationDirection == Down && frame < frameRate)
     {
       highlightRect.move(0, boxHeight / frameRate);
@@ -200,6 +198,13 @@ int main()
       {
         mainView.move(0, boxHeight / frameRate);
       }
+      frame++;
+    }
+    // Full Down
+    else if (animationDirection == FullDown && frame < frameRate)
+    {
+      highlightRect.move(0, (boxHeight * pageSize) / frameRate);
+      mainView.move(0, (boxHeight * (pageSize - 3)) / frameRate);
       frame++;
     }
     else
@@ -211,30 +216,39 @@ int main()
     while (window.pollEvent(event))
     {
       // Events
-      bool joystickRight = (event.joystickMove.axis == sf::Joystick::X && event.joystickMove.position == 100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
-      bool joystickLeft = (event.joystickMove.axis == sf::Joystick::X && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
       bool joystickUp = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
       bool joystickDown = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
       bool selectButtonPressed = sf::Joystick::isButtonPressed(0, 1) || sf::Joystick::isButtonPressed(1, 1);
       // Next: Down => 100
       if (
         joystickDown &&
-        animationDirection == None &&
-        pageNumber < pageSize)
+        animationDirection == None)
       {
-        animationDirection = Down;
-        pageNumber++;
-        timeout = 2400;
+        if (pageNumber < pageSize)
+        {
+
+          animationDirection = Down;
+          pageNumber++;
+        }
+        else {
+          animationDirection = FullUp;
+          pageNumber = 0;
+        }
       }
       // Prev: Up
       if (
         joystickUp &&
-        animationDirection == None &&
-        pageNumber > 0)
+        animationDirection == None)
       {
-        animationDirection = Up;
-        pageNumber--;
-        timeout = 2400;
+        if (pageNumber > 0)
+        {
+          animationDirection = Up;
+          pageNumber--;
+        }
+        else {
+          animationDirection = FullDown;
+          pageNumber = pageSize;
+        }
       }
 
       // Open
