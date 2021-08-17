@@ -217,7 +217,7 @@ int main()
     {
       // Events
       bool joystickUp = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
-      bool joystickDown = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
+      bool joystickDown = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == 100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
       bool selectButtonPressed = sf::Joystick::isButtonPressed(0, 1) || sf::Joystick::isButtonPressed(1, 1);
       // Next: Down => 100
       cout << event.joystickMove.position << endl;
@@ -283,45 +283,6 @@ int main()
     window.setView(guiView);
     window.draw(instructions);
     window.display();
-
-    // DEV
-    if (sf::Joystick::isButtonPressed(0, 1))
-    {
-      cout << "button 1 pressed" << endl;
-    }
-    if (sf::Joystick::isButtonPressed(0, 1))
-    {
-      cout << "button 1 pressed" << endl;
-    }
-    if (sf::Joystick::isButtonPressed(0, 2))
-    {
-      cout << "button 2 pressed" << endl;
-    }
-    if (sf::Joystick::isButtonPressed(0, 3))
-    {
-      cout << "button 3 pressed" << endl;
-    }
-    if (sf::Joystick::isButtonPressed(0, 4))
-    {
-      cout << "button 4 pressed" << endl;
-    }
-    if (sf::Joystick::isButtonPressed(0, 5))
-    {
-      cout << "button 5 pressed" << endl;
-    }
-    if (sf::Joystick::isButtonPressed(0, 6))
-    {
-      cout << "button 6 pressed" << endl;
-    }
-    if (sf::Joystick::isButtonPressed(0, 7))
-    {
-      cout << "button 6 pressed" << endl;
-    }
-    if (sf::Joystick::isButtonPressed(0, 8))
-    {
-      cout << "button 6 pressed" << endl;
-    }
   }
-
   return 0;
 }
