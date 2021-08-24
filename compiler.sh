@@ -1,6 +1,7 @@
 #!/usr/bin/bash
-g++ -c main.cpp -o bin/arcade.o
-g++ bin/arcade.o -o bin/arcade-app -ljsoncpp -lsfml-graphics -lsfml-window -lsfml-system
+g++ -c main.cpp readJson.cpp
+g++ main.o readJson.o -o bin/arcade-app -ljsoncpp -lsfml-graphics -lsfml-window -lsfml-system
+rm main.o readJson.o
 if [ "$1" == "run" ]; then
   bin/arcade-app
 elif [ "$1" == "build" ]; then

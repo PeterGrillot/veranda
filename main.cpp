@@ -1,9 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <jsoncpp/json/json.h>
-#include <fstream>
 #include <chrono>
 #include <thread>
+
+#include "readJson.h"
 
 #define FONT_FILENAME "RobotoCondensed-Regular.ttf"
 
@@ -24,14 +25,11 @@ int main()
   window.setFramerateLimit(frameRate * 3);
   window.setKeyRepeatEnabled(false);
 
+  Json::Value obj = readJson();
   // Timer
   int timer = 0;
 
-  // JSON
-  ifstream ifs("data.json");
-  Json::Reader reader;
-  Json::Value obj;
-  reader.parse(ifs, obj);
+
 
   // Pagination
   int index = 0;
@@ -51,10 +49,13 @@ int main()
   };
   int animationDirection = None;
 
+  bool isModalOpen = false;
+
   // Layout
   int logoLeft = 280;
   int textLeft = 980;
   int wordWrap = 110;
+  int buttonVectorSize = 6;
 
   // Color
   sf::Color darkGreyColor = sf::Color(0, 0, 0, 255);
@@ -69,15 +70,8 @@ int main()
   // Black Background
   sf::RectangleShape blackBackgroundRectangle;
   blackBackgroundRectangle.setSize(sf::Vector2f(screenWidth * (pageSize + 1), screenHeight));
-  blackBackgroundRectangle.setFillColor(sf::Color(0, 0, 0));
+  blackBackgroundRectangle.setFillColor(sf::Color::Black);
   blackBackgroundRectangle.move(sf::Vector2f(0, 0));
-
-  // GUI
-  sf::Text instructions;
-  instructions.setFont(font);
-  instructions.setCharacterSize(32);
-  instructions.setFillColor(sf::Color::White);
-  instructions.move(10, 22);
 
   // Highlight Box
   int borderSize = 12;
@@ -145,7 +139,6 @@ int main()
         longDesc.at(n) = '\n';
       }
     }
-
     descriptionText[i].setFont(font);
     descriptionText[i].setString(longDesc);
     descriptionText[i].setCharacterSize(28);
@@ -159,17 +152,90 @@ int main()
   sf::View mainView;
   mainView.setCenter(sf::Vector2f(screenWidth / 2, screenHeight / 2));
   mainView.setSize(sf::Vector2f(screenWidth, screenHeight));
+
   // GUI Camera
   sf::View guiView;
-  guiView.setViewport(sf::FloatRect(0.8f, 0.95f, 0.25f, 0.5f));
+  guiView.setCenter(sf::Vector2f(screenWidth / 2, screenHeight / 2));
+  guiView.setSize(sf::Vector2f(screenWidth, screenHeight));
 
-  // Running
+  // Build GUI
+  sf::Text instructions;
+  instructions.setFont(font);
+  instructions.setCharacterSize(32);
+  instructions.setFillColor(sf::Color::White);
+  instructions.move(sf::Vector2f(screenWidth - 120, screenHeight - 90));
+
+  // Modal
+  sf::RectangleShape modalBackground;
+  int modalMargin = 120;
+  modalBackground.setFillColor(sf::Color(20, 0, 20, 200));
+  modalBackground.setSize(sf::Vector2f(screenWidth - (modalMargin * 2), screenHeight - (modalMargin * 2)));
+  modalBackground.move(sf::Vector2f(modalMargin, modalMargin));
+
+  // Player Buttons
+  sf::Texture p1_ButtonTexture;
+  sf::Sprite p1_ButtonSprite;
+  vector<sf::Text> p1_Label(buttonVectorSize);
+
+  string p1_bgPath = "assets/controller.png";
+  int p1_y1 = 1;
+  int p1_y2 = 1;
+  int buttonLeftMultiplier = 420;
+  int textMarginLeft = 640;
+  int textMarginTop = 180;
+
+  sf::Text controlTitle;
+  controlTitle.setFont(font);
+  controlTitle.setString("");
+  controlTitle.setCharacterSize(62);
+  controlTitle.setFillColor(sf::Color::White);
+  controlTitle.setPosition(sf::Vector2f(200, 180));
+
+  for (size_t i = 0; i < buttonVectorSize; i++)
+  {
+    p1_Label[i].setFont(font);
+    p1_Label[i].setString("");
+    p1_Label[i].setCharacterSize(42);
+    p1_Label[i].setFillColor(sf::Color::White);
+
+
+    if (i < 3) {
+      if (i == 1) {
+        p1_Label[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * p1_y1), 240 + textMarginTop));
+      }
+      else {
+        p1_Label[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * p1_y1), 360 + textMarginTop));
+      }
+      p1_y1++;
+    }
+    else {
+      if (i == 4) {
+        p1_Label[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * p1_y2), 520 + textMarginTop));
+      }
+      else {
+        p1_Label[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * p1_y2), 640 + textMarginTop));
+      }
+
+      p1_y2++;
+    }
+
+  }
+
+  if (!p1_ButtonTexture.loadFromFile(p1_bgPath, sf::IntRect(0, 0, 900, 509)))
+    return -1;
+  p1_ButtonTexture.setSmooth(true);
+  p1_ButtonSprite.move(sf::Vector2f(400, 280));
+  p1_ButtonSprite.setTexture(p1_ButtonTexture);
+  p1_ButtonSprite.scale(sf::Vector2f(2, 2));
+
+  /*
+  Window Running
+  */
   while (window.isOpen())
   {
     sf::Event event;
 
-    // Build GUI
-    string instructionsText = "Up/Down to Cycle >> Press any buttons to select >> " + to_string(pageNumber + 1) + " of " + to_string(pageSize + 1);
+    string instructionsText = to_string(pageNumber + 1) + " of " + to_string(pageSize + 1);
     instructions.setString(instructionsText);
 
     // Animate Direction
@@ -219,15 +285,14 @@ int main()
       bool joystickUp = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
       bool joystickDown = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == 100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
       bool selectButtonPressed = sf::Joystick::isButtonPressed(0, 1) || sf::Joystick::isButtonPressed(1, 1);
-      // Next: Down => 100
-      cout << event.joystickMove.position << endl;
+      // Next: Down
       if (
         joystickDown &&
         animationDirection == None)
       {
+        isModalOpen = false;
         if (pageNumber < pageSize)
         {
-
           animationDirection = Down;
           pageNumber++;
         }
@@ -241,6 +306,7 @@ int main()
         joystickUp &&
         animationDirection == None)
       {
+        isModalOpen = false;
         if (pageNumber > 0)
         {
           animationDirection = Up;
@@ -252,13 +318,40 @@ int main()
         }
       }
 
-      // Open
+      // Open Modal
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
+      {
+        // Set Title
+        controlTitle.setString(obj[pageNumber]["title"].asString() + " Controls");
+        // Clear out old labels
+        for (int i = 0; i < 6; i++)
+        {
+          p1_Label[i].setString("");
+          // p1_ButtonSprite[i].setColor(sf::Color(200, 200, 255, 150));
+        }
+        // Add new labels
+        for (int i = 0; i < obj[pageNumber]["controls"].size(); i++)
+        {
+          p1_Label[i].setString(obj[pageNumber]["controls"][i].asString());
+          // p1_ButtonSprite[i].setColor(sf::Color(255, 255, 255));
+        }
+        isModalOpen = true;
+      }
+
+      // Open Modal
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+      {
+        isModalOpen = false;
+      }
+
+      // Open Game
       if (sf::Joystick::isButtonPressed(0, 1) ||
         sf::Joystick::isButtonPressed(0, 2) ||
         sf::Joystick::isButtonPressed(1, 1) ||
         sf::Joystick::isButtonPressed(1, 2)
         )
       {
+        isModalOpen = false;
         string currentRom = "mame " + obj[pageNumber]["rom"].asString();
         const char* command = currentRom.c_str();
         system(command);
@@ -268,8 +361,9 @@ int main()
       if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) || event.type == sf::Event::Closed)
         window.close();
     }
-
     // Set up and draw
+    window.clear();
+
     window.setView(mainView);
     window.draw(blackBackgroundRectangle);
     for (size_t i = 0; i < obj.size(); i++)
@@ -280,7 +374,19 @@ int main()
       window.draw(titleText[i]);
     }
     window.draw(highlightRect);
+
+
     window.setView(guiView);
+    if (isModalOpen)
+    {
+      window.draw(modalBackground);
+      window.draw(p1_ButtonSprite);
+      for (size_t i = 0; i < buttonVectorSize; i++)
+      {
+        window.draw(p1_Label[i]);
+      }
+      window.draw(controlTitle);
+    }
     window.draw(instructions);
     window.display();
   }
