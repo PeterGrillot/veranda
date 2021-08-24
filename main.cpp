@@ -14,9 +14,9 @@ using namespace chrono;
 int main()
 {
   // Window
-  // sf::RenderWindow window(sf::VideoMode(), "Arcade Runner", sf::Style::Fullscreen);
+  sf::RenderWindow window(sf::VideoMode(), "Arcade Runner", sf::Style::Fullscreen);
   // DEV
-  sf::RenderWindow window(sf::VideoMode(2560, 1440), "Veranda");
+  // sf::RenderWindow window(sf::VideoMode(2560, 1440), "Veranda");
   const float screenWidth = 2560;
   const float screenHeight = 1440;
   const int boxPerPage = 4;
@@ -25,11 +25,8 @@ int main()
   window.setFramerateLimit(frameRate * 3);
   window.setKeyRepeatEnabled(false);
 
+  // Get JSON
   Json::Value obj = readJson();
-  // Timer
-  int timer = 0;
-
-
 
   // Pagination
   int index = 0;
@@ -181,7 +178,7 @@ int main()
   int p1_y1 = 1;
   int p1_y2 = 1;
   int buttonLeftMultiplier = 420;
-  int textMarginLeft = 640;
+  int textMarginLeft = 650;
   int textMarginTop = 180;
 
   sf::Text controlTitle;
@@ -198,7 +195,6 @@ int main()
     p1_Label[i].setCharacterSize(42);
     p1_Label[i].setFillColor(sf::Color::White);
 
-
     if (i < 3) {
       if (i == 1) {
         p1_Label[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * p1_y1), 240 + textMarginTop));
@@ -210,15 +206,13 @@ int main()
     }
     else {
       if (i == 4) {
-        p1_Label[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * p1_y2), 520 + textMarginTop));
+        p1_Label[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * p1_y2), 530 + textMarginTop));
       }
       else {
-        p1_Label[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * p1_y2), 640 + textMarginTop));
+        p1_Label[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * p1_y2), 650 + textMarginTop));
       }
-
       p1_y2++;
     }
-
   }
 
   if (!p1_ButtonTexture.loadFromFile(p1_bgPath, sf::IntRect(0, 0, 900, 509)))
@@ -363,7 +357,6 @@ int main()
     }
     // Set up and draw
     window.clear();
-
     window.setView(mainView);
     window.draw(blackBackgroundRectangle);
     for (size_t i = 0; i < obj.size(); i++)
@@ -374,8 +367,6 @@ int main()
       window.draw(titleText[i]);
     }
     window.draw(highlightRect);
-
-
     window.setView(guiView);
     if (isModalOpen)
     {
