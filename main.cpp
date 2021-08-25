@@ -3,16 +3,29 @@
 #include <jsoncpp/json/json.h>
 #include <chrono>
 #include <thread>
+#include <string>
+#include <sstream>
+#include <libgen.h>         // dirname
+#include <unistd.h>         // readlink
+#include <linux/limits.h>   // PATH_MAX
 
 #include "readJson.h"
 
-#define FONT_FILENAME "RobotoCondensed-Regular.ttf"
+
 
 using namespace std;
 using namespace chrono;
 
 int main()
 {
+  char result[PATH_MAX];
+  ssize_t count = readlink("/proc/self/exe", result, PATH_MAX);
+  string path;
+  if (count != -1) {
+    path = dirname(result);
+  }
+
+  const string fontFilename = path + "/RobotoCondensed-Regular.ttf";
   // Window
   sf::RenderWindow window(sf::VideoMode(), "Arcade Runner", sf::Style::Fullscreen);
   // DEV
@@ -23,13 +36,15 @@ int main()
   const float boxHeight = screenHeight / boxPerPage;
   const int frameRate = 60;
 
+  cout << path << endl;
+
   // Window Settings
   window.setMouseCursorVisible(false);
   window.setFramerateLimit(frameRate * 3);
   window.setKeyRepeatEnabled(false);
 
   // Get JSON
-  Json::Value obj = readJson();
+  Json::Value obj = readJson(path);
 
   // Pagination
   int index = 0;
@@ -62,7 +77,7 @@ int main()
 
   //Declare a Font object
   sf::Font font;
-  if (!font.loadFromFile(FONT_FILENAME))
+  if (!font.loadFromFile(fontFilename))
   {
     cerr << "Error: Cannot load font" << endl;
   }
@@ -101,8 +116,9 @@ int main()
     int screenWidthOffset = screenWidth * i;
     // Background
     // 1280w x 240
-    string bgPath = "assets/" + obj[index]["bg"].asString();
-    if (!backgroundTexture[i].loadFromFile(bgPath, sf::IntRect(0, 0, screenWidth, boxHeight)))
+    ostringstream bgPath;
+    bgPath << path << "/assets/" << obj[index]["bg"].asString();
+    if (!backgroundTexture[i].loadFromFile(bgPath.str(), sf::IntRect(0, 0, screenWidth, boxHeight)))
       return -1;
     backgroundSprite[i].scale(sf::Vector2f(2.1f, 2.1f)); //
     backgroundTexture[i].setSmooth(true);
@@ -111,8 +127,9 @@ int main()
 
     // Logo
     // 560 x ANYh
-    string logoPath = "assets/" + obj[index]["logo"].asString();
-    if (!logoTexture[i].loadFromFile(logoPath))
+    ostringstream logoPath;
+    logoPath << path << "/assets/" << obj[index]["logo"].asString();
+    if (!logoTexture[i].loadFromFile(logoPath.str()))
       return -1;
     logoTexture[i].setSmooth(true);
     logoSprite[i].setTexture(logoTexture[i]);
@@ -177,7 +194,7 @@ int main()
   sf::Sprite p1_ButtonSprite;
   vector<sf::Text> p1_Label(buttonVectorSize);
 
-  string p1_bgPath = "assets/controller.png";
+  string p1_bgPath = path + "/assets/controller.png";
   int p1_y1 = 1;
   int p1_y2 = 1;
   int buttonLeftMultiplier = 420;

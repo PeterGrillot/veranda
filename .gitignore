@@ -1,3 +1,5 @@
 .editorconfig
 .vscode
 veranda-app*
+build
+bin

@@ -5,10 +5,10 @@
 
 using namespace std;
 
-Json::Value readJson()
+Json::Value readJson(string path)
 {
   // JSON
-  ifstream ifs("data.json");
+  ifstream ifs(path + "/data.json");
   Json::Reader reader;
   Json::Value obj;
   reader.parse(ifs, obj);
