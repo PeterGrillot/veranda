@@ -22,6 +22,9 @@ int main()
   const int boxPerPage = 4;
   const float boxHeight = screenHeight / boxPerPage;
   const int frameRate = 60;
+
+  // Window Settings
+  window.setMouseCursorVisible(false);
   window.setFramerateLimit(frameRate * 3);
   window.setKeyRepeatEnabled(false);
 
