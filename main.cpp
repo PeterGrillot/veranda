@@ -345,8 +345,7 @@ int main()
 
       // Open Game
       if (sf::Joystick::isButtonPressed(0, 8) ||
-        sf::Joystick::isButtonPressed(1, 8)
-        )
+        sf::Joystick::isButtonPressed(1, 8))
       {
         isModalOpen = false;
         string currentRom = "mame " + obj[pageNumber]["rom"].asString();
@@ -356,8 +355,8 @@ int main()
 
       // Close
       if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) ||
-        sf::Joystick::isButtonPressed(0, 7) &&
-        sf::Joystick::isButtonPressed(1, 8))
+        sf::Joystick::isButtonPressed(0, 4) &&
+        sf::Joystick::isButtonPressed(1, 4))
         window.close();
     }
     // Set up and draw
