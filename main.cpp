@@ -316,7 +316,8 @@ int main()
       }
 
       // Open Modal
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
+      if (sf::Joystick::isButtonPressed(0, 6) ||
+        sf::Joystick::isButtonPressed(1, 6))
       {
         // Set Title
         controlTitle.setString(obj[pageNumber]["title"].asString() + " Controls");
@@ -336,16 +337,15 @@ int main()
       }
 
       // Open Modal
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+      if (sf::Joystick::isButtonPressed(0, 7) ||
+        sf::Joystick::isButtonPressed(1, 7))
       {
         isModalOpen = false;
       }
 
       // Open Game
-      if (sf::Joystick::isButtonPressed(0, 1) ||
-        sf::Joystick::isButtonPressed(0, 2) ||
-        sf::Joystick::isButtonPressed(1, 1) ||
-        sf::Joystick::isButtonPressed(1, 2)
+      if (sf::Joystick::isButtonPressed(0, 8) ||
+        sf::Joystick::isButtonPressed(1, 8)
         )
       {
         isModalOpen = false;
