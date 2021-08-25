@@ -355,7 +355,9 @@ int main()
       }
 
       // Close
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) || event.type == sf::Event::Closed)
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) ||
+        sf::Joystick::isButtonPressed(0, 7) &&
+        sf::Joystick::isButtonPressed(1, 8))
         window.close();
     }
     // Set up and draw
