@@ -1,1 +1,375 @@
-[{"title":"Bubble Bobble","description":"Bubble Bobble is a 1986 platform arcade game developed and published by Taito. It was distributed in the United States by Romstar, and in Europe by Electrocoin. Players control Bub and Bob, two dragons that set out to save their girlfriends from a world known as the Cave of Monsters.","rom":"bbredux","bg":"bubbob-bg.jpg","box":"bubbob-box.jpg","logo":"bubbob-logo.png","controls":["Bubble","Jump"]},{"title":"Donkey Kong","description":"Donkey Kong is an arcade platform game announced by Nintendo in Japan on July 9, 1981 and released on mid-July, 1981, then in North America later that month and Europe later that year. Its gameplay maneuvers Mario across platforms to ascend a construction site and rescue Pauline from the giant gorilla named Donkey Kong","rom":"dkonghrd","bg":"dk-bg.jpg","box":"dk-box.jpg","logo":"dk-logo.png","controls":["Jump"]},{"title":"Final Fight","description":"Final Fight is a series of beat 'em up video games by Capcom, which began with the arcade release of Final Fight in 1989. Set in the fictional Metro City, the games focus on a group of heroic vigilantes who fights against the control and various threats of criminal gangs, primarily the Mad Gear Gang.","rom":"ffightub","bg":"ffight-bg.jpg","box":"ffight-box.jpg","logo":"ffight-logo.png","controls":["Jump"]},{"title":"Gauntlet","description":"Gauntlet is a 1985 fantasy-themed hack-and-slash arcade game developed and released by Atari Games. It is noted as being one of the first multiplayer dungeon crawl arcade games. The core design of Gauntlet comes from 1983 Atari 8-bit dungeon crawl game Dandy, which resulted in a threat of legal action.","rom":"gauntlet","bg":"gauntlet-bg.jpg","box":"gauntlet-box.jpg","logo":"gauntlet-logo.png","controls":["Attack","Magic"]},{"title":"Golden Axe II: The Revenge of Death Adder","description":"Golden Axe: The Revenge of Death Adder is an arcade game released by Sega in 1992. It is the sequel to the original Golden Axe and features the same hack and slash action as its predecessor with new additions and improvements. Powered by the System 32 arcade board, Revenge of Death Adder features more detailed graphics, adds new selectable characters and doubles the maximum number of simultaneous players from two to four.","rom":"ga2","bg":"ga2-bg.jpg","logo":"ga2-logo.png","controls":["Attack","Jump","Magic"],"box":"ga2-box.jpg"},{"title":"Gradius","description":"Gradius is a series of shooter video games, introduced in 1985, developed and published by Konami for a variety of portable, console and arcade platforms. In many games in the series, the player controls a ship known as the Vic Viper.","rom":"gradius","bg":"gradius-bg.jpg","box":"gradius-box.jpg","logo":"gradius-logo.png","controls":["Option","Select"]},{"title":"Gradius III","description":"Gradius III is a 1989 scrolling shooter video game developed and published by Konami, originally released for the arcades in Japan and other parts of Asia on December 11, 1989. It is the third game in the Gradius series.","rom":"gradius3","bg":"gradius3-bg.jpg","box":"gradius3-box.jpg","logo":"gradius3-logo.png","controls":["Select","Fire"]},{"title":"Marvel vs. Capcom","description":"Marvel vs. Capcom is a series of crossover fighting games developed and published by Capcom, featuring characters from their own video game franchises and comic book series published by Marvel Comics. The series originated as coin-operated arcade games, though later releases would be specifically developed for home consoles, handhelds, and personal computers.","rom":"mvscu","bg":"mvcu-bg.jpg","box":"mvcu-box.jpg","logo":"mvcu-logo.png","controls":["Jab","Strong","Fierce","Short Kick","Forward","Roundhouse"]},{"title":"Mortal Kombat","description":"Mortal Kombat is an arcade fighting game developed and published by Midway in 1992. The game focuses on several characters of various intentions who enter a martial arts tournament with worldly consequences. It introduced many key aspects of the Mortal Kombat series, including the unique five-button control scheme and gory finishing moves called Fatalities.","rom":"mkla1","logo":"mk-logo.png","controls":["High Punch","Block","High Kick","Low Punch","Block","Low Kick"],"bg":"mk-bg.jpg","box":"mk-box.jpg"},{"title":"Mortal Kombat 2","description":"Mortal Kombat II is an arcade fighting game developed and published by Midway in 1992. The game focuses on several characters of various intentions who enter a martial arts tournament with worldly consequences. It introduced many key aspects of the Mortal Kombat series, including the unique five-button control scheme and gory finishing moves called Fatalities.","rom":"mk2","bg":"mk2-bg.jpg","box":"mk2-box.jpg","logo":"mk2-logo.png","controls":["High Punch","Block","High Kick","Low Punch","Block","Low Kick"]},{"title":"Mortal Kombat 3","description":"Mortal Kombat 3 is a fighting video game developed by Midway / Atari Games and first released into arcades in 1995. It is the third entry in the Mortal Kombat series and is the sequel to Mortal Kombat II. As in the previous games, it has a cast of characters that players choose from and guide through a series of battles against other opponents.","rom":"umk3","bg":"umk3-bg.jpg","box":"umk3-box.png","logo":"umk3-logo.png","controls":["High Punch","Block","High Kick","Low Punch","Block","Low Kick"]},{"title":"Ms. Pac-man","description":"Ms. Pac-Man is a 1982 maze arcade game developed by General Computer Corporation and published by Midway. It is the first sequel to Pac-Man, and the first entry in the series to not be made by Namco. Controlling the titular character, the player is tasked with eating all of the pellets in an enclosed maze while avoiding four colored ghosts.","rom":"mspacman","bg":"mspacman-bg.jpg","box":"mspacman-box.jpg","logo":"mspacman-logo.png","controls":[]},{"title":"NBA JAM (2 Player co-op)","description":"NBA Jam is a long-running basketball video game series based on the National Basketball Association. Initially developed as arcade games by Midway, the game found popularity with its photo realistic digitized graphics, over-the-top presentation and style of two-on-two basketball play. Boomshakkalakka!","rom":"nbajam","bg":"nbajam-bg.jpg","box":"nbajam-box.jpg","logo":"nbajamr2-logo.png","controls":["Shoot/Block","Pass/Steal",null,"Turbo"]},{"title":"NBA JAM (2 Player verses)","description":"NBA Jam is a long-running basketball video game series based on the National Basketball Association. Initially developed as arcade games by Midway, the game found popularity with its photo realistic digitized graphics, over-the-top presentation and style of two-on-two basketball play. Boomshakkalakka!","rom":"nbajamr2","bg":"nbajam2-bg.jpg","box":"nbajam-box.jpg","logo":"nbajam-logo.png","controls":["Shoot/Block","Pass/Steal",null,"Turbo"]},{"title":"Paperboy","description":"Paperboy is an arcade action game developed and published by Atari Games and Midway Games, and released in 1985. The player takes the role of a paperboy who delivers a fictional newspaper called The Daily Sun along a suburban street on his bicycle. The arcade version of the game featured bike handlebars as the controller. The game was ported to many home systems beginning in 1986.","rom":"paperboy","bg":"paperboy-bg.jpg","box":"paperboy-box.jpg","logo":"paperboy-logo.png","controls":["Throw"]},{"title":"Punch Out!!","description":"Punch-Out!! is an arcade boxing video game by Nintendo, developed in 1983 and released in February 1984. It was the first in a series of successful Punch-Out!! games. The arcade game was a global commercial success, becoming one of the top five highest-grossing arcade games of 1984 in the United States.","rom":"punchout","bg":"punchout-bg.jpg","box":"punchout-box.jpg","logo":"punchout-logo.png","controls":["Left Blow","Right Blow","Hook / Uppercut"]},{"title":"R-Type","description":"R-Type is a side-scrolling shooter arcade video game developed and released by Irem in 1987. The player controls a star ship, the R-9 Arrowhead, in its efforts to destroy the Bydo, a powerful alien race bent on wiping out all of mankind.","rom":"rtype","bg":"rtype-bg.jpg","box":"rtype-box.jpg","logo":"rtype-logo.png","controls":["Attack"]},{"title":"Ridge Racer","description":"Ridge Racer is a racing video game series developed and published for arcade systems and home game consoles by Bandai Namco Entertainment, formerly Namco. The first game, Ridge Racer, was originally released in arcades for the Namco System 22 hardware, later ported to the PlayStation two years later as a launch title.","rom":"ridgerac","bg":"ridgerac-bg.jpg","box":"ridgerac-box.jpg","logo":"ridgerac-logo.png","controls":["Gas","Brakes"]},{"title":"Soulcalibur","description":"Soulcalibur is a weapon-based fighting video game franchise by Bandai Namco Entertainment. There are seven main installments of video games and various media spin-offs, including music albums and a series of manga books.","rom":"soulclbr","bg":"soulcal-bg.jpg","box":"soulcal-box.jpg","logo":"soulcal-logo.png","controls":["A","B","K","G"]},{"title":"Street Fighter II","description":"Street Fighter II, is a competitive fighting game developed by Capcom and originally released for arcade systems in 1991. It is the second installment in the Street Fighter series and the sequel to Street Fighter, released in 1987","rom":"sf2ce","bg":"sf2-bg.jpg","box":"sf2-box.jpg","logo":"sf2-logo.png","controls":["Jab","Strong","Fierce","Short Kick","Forward","Roundhouse"]},{"title":"Street Fighter III: New Generation","description":"Street Fighter III 3rd Strike: Fight for the Future is a 2D Competitive fighting game developed and published by Capcom, originally released for the arcades in 1999. It was ported to the Dreamcast, PlayStation 2, and Xbox between 2000 and 2010.","rom":"sfiiin","bg":"sfiiin-bg.jpg","box":"sfiiin-box.jpg","logo":"sfiiin-logo.png","controls":["Jab","Strong","Fierce","Short Kick","Forward","Roundhouse"]},{"title":"Teenage Mutant Ninja Turtles Arcade","description":"Teenage Mutant Ninja Turtles is a 1989 arcade game released by Konami[3] and based on the first Teenage Mutant Ninja Turtles animated series that began airing two years earlier. In the game, up to four players control the titular Ninja Turtles, fighting through various levels to defeat the turtles' enemies, including the Shredder, Krang and the Foot Clan.","rom":"tmnt2po","bg":"tmnt-bg.jpg","box":"tmnt-box.jpg","logo":"tmnt-logo.png","controls":["Jump","Attack"]},{"title":"Teenage Mutant Ninja Turtles Arcade: Turtles in Time","description":"Teenage Mutant Ninja Turtles: Turtles in Time, released as Teenage Mutant Hero Turtles: Turtles in Time in Europe, is an arcade video game produced by Konami. A sequel to the original Teenage Mutant Ninja Turtles arcade game, it is a scrolling beat 'em up type game based mainly on the 1987 TMNT animated.","rom":"tmht22pe","bg":"tmnttit-bg.jpg","box":"tmnttit-box.jpg","logo":"tmnttit-logo.png","controls":["Jump","Attack"]},{"title":"Tekken 3","description":"Tekken 3 is a fighting game, the third entry in the Tekken series. It was released in arcades in March 1997, and for the PlayStation in 1998. The original arcade version of the game was released in 2005 for the PlayStation 2 as part of Tekken 5's Arcade History mode.","rom":"tekken3ua","bg":"tekken3-bg.jpg","box":"tekken3-box.jpg","logo":"tekken3-logo.png","controls":["Punch Left","Punch Right",null,"Kick Left","Kick Right"]},{"title":"Tekken Tag","description":"Tekken Tag Tournament is a spin-off of the Namco's Tekken fighting game series. It is the fourth installment in the Tekken fighting game series. Tekken Tag Tournament was released as an arcade game in 1999. before becoming a North American and European launch title for the PlayStation 2 in 2000.","rom":"tektagt","bg":"tektagt-bg.jpg","box":"tektagt-box.jpg","logo":"tektagt-logo.png","controls":["Punch Left","Punch Right","Tag Out","Kick Left","Kick Right"]},{"title":"The Simpsons","description":"The Simpsons Arcade Game is a Beat 'em up game produced by Konami in 1991. Play The Simpsons Arcade Game online! The Simpsons Arcade Game game description. Waylon Smithers has just stolen a diamond from Springfield Jewelers for Mr. Burns. While trying to make a getaway, he crashes into Homer, which knocks the diamond out of his hand.","rom":"simpsons2p","bg":"simpsons-bg.jpg","logo":"simpsons-logo.png","controls":["Attack","Jump"]},{"title":"X-MEN","description":"X-Men  is a side-scrolling beat 'em up game produced and released by Konami for arcades in 1992, based on the Marvel Comics superhero team of the same name. The character designs of the characters in the game are based on the 1989 cartoon X-Men: Pryde of the X-Men.","rom":"xmen2pa","bg":"xmen-bg.jpg","box":"xmen-box.jpg","logo":"xmen-logo.png","controls":["Mutant",null,null,"Attack","Jump"]},{"title":"X-Men: Children of the Atom","description":"X-Men: Children of the Atom is an arcade game that was produced by Capcom and released on the CP System II arcade hardware in 1994 in Japan and in 1995 in North America and Europe. Based on the X-Men comic book, it is the first fighting game produced by Capcom using characters under license from Marvel Comics.","rom":"xmcota","bg":"xmcotar1-bg.jpg","box":"xmcotar1-box.jpg","logo":"xmcotar1-logo.png","controls":["Jab","Strong","Fierce","Short Kick","Forward","Roundhouse"]}]
+[
+    {
+        "title": "Bubble Bobble",
+        "description": "Bubble Bobble is a 1986 platform arcade game developed and published by Taito. It was distributed in the United States by Romstar, and in Europe by Electrocoin. Players control Bub and Bob, two dragons that set out to save their girlfriends from a world known as the Cave of Monsters.",
+        "rom": "bbredux",
+        "bg": "bubbob-bg.jpg",
+        "box": "bubbob-box.jpg",
+        "logo": "bubbob-logo.png",
+        "controls": [
+            "Bubble",
+            "Jump"
+        ]
+    },
+    {
+        "title": "Donkey Kong",
+        "description": "Donkey Kong is an arcade platform game announced by Nintendo in Japan on July 9, 1981 and released on mid-July, 1981, then in North America later that month and Europe later that year. Its gameplay maneuvers Mario across platforms to ascend a construction site and rescue Pauline from the giant gorilla named Donkey Kong",
+        "rom": "dkonghrd",
+        "bg": "dk-bg.jpg",
+        "box": "dk-box.jpg",
+        "logo": "dk-logo.png",
+        "controls": [
+            "Jump"
+        ]
+    },
+    {
+        "title": "Final Fight",
+        "description": "Final Fight is a series of beat 'em up video games by Capcom, which began with the arcade release of Final Fight in 1989. Set in the fictional Metro City, the games focus on a group of heroic vigilantes who fights against the control and various threats of criminal gangs, primarily the Mad Gear Gang.",
+        "rom": "ffightub",
+        "bg": "ffight-bg.jpg",
+        "box": "ffight-box.jpg",
+        "logo": "ffight-logo.png",
+        "controls": [
+            "Jump"
+        ]
+    },
+    {
+        "title": "Gauntlet",
+        "description": "Gauntlet is a 1985 fantasy-themed hack-and-slash arcade game developed and released by Atari Games. It is noted as being one of the first multiplayer dungeon crawl arcade games. The core design of Gauntlet comes from 1983 Atari 8-bit dungeon crawl game Dandy, which resulted in a threat of legal action.",
+        "rom": "gauntlet",
+        "bg": "gauntlet-bg.jpg",
+        "box": "gauntlet-box.jpg",
+        "logo": "gauntlet-logo.png",
+        "controls": [
+            "Attack",
+            "Magic"
+        ]
+    },
+    {
+        "title": "Golden Axe II: The Revenge of Death Adder",
+        "description": "Golden Axe: The Revenge of Death Adder is an arcade game released by Sega in 1992. It is the sequel to the original Golden Axe and features the same hack and slash action as its predecessor with new additions and improvements. Powered by the System 32 arcade board, Revenge of Death Adder features more detailed graphics, adds new selectable characters and doubles the maximum number of simultaneous players from two to four.",
+        "rom": "ga2",
+        "bg": "ga2-bg.jpg",
+        "logo": "ga2-logo.png",
+        "controls": [
+            "Attack",
+            "Jump",
+            "Magic"
+        ],
+        "box": "ga2-box.jpg"
+    },
+    {
+        "title": "Gradius",
+        "description": "Gradius is a series of shooter video games, introduced in 1985, developed and published by Konami for a variety of portable, console and arcade platforms. In many games in the series, the player controls a ship known as the Vic Viper.",
+        "rom": "gradius",
+        "bg": "gradius-bg.jpg",
+        "box": "gradius-box.jpg",
+        "logo": "gradius-logo.png",
+        "controls": [
+            "Select",
+            "Fire"
+        ]
+    },
+    {
+        "title": "Gradius III",
+        "description": "Gradius III is a 1989 scrolling shooter video game developed and published by Konami, originally released for the arcades in Japan and other parts of Asia on December 11, 1989. It is the third game in the Gradius series.",
+        "rom": "gradius3",
+        "bg": "gradius3-bg.jpg",
+        "box": "gradius3-box.jpg",
+        "logo": "gradius3-logo.png",
+        "controls": [
+            "Select",
+            "Fire"
+        ]
+    },
+    {
+        "title": "Marvel vs. Capcom",
+        "description": "Marvel vs. Capcom is a series of crossover fighting games developed and published by Capcom, featuring characters from their own video game franchises and comic book series published by Marvel Comics. The series originated as coin-operated arcade games, though later releases would be specifically developed for home consoles, handhelds, and personal computers.",
+        "rom": "mvscu",
+        "bg": "mvcu-bg.jpg",
+        "box": "mvcu-box.jpg",
+        "logo": "mvcu-logo.png",
+        "controls": [
+            "Jab",
+            "Strong",
+            "Fierce",
+            "Short Kick",
+            "Forward",
+            "Roundhouse"
+        ]
+    },
+    {
+        "title": "Mortal Kombat",
+        "description": "Mortal Kombat is an arcade fighting game developed and published by Midway in 1992. The game focuses on several characters of various intentions who enter a martial arts tournament with worldly consequences. It introduced many key aspects of the Mortal Kombat series, including the unique five-button control scheme and gory finishing moves called Fatalities.",
+        "rom": "mkla1",
+        "logo": "mk-logo.png",
+        "controls": [
+            "High Punch",
+            "Block",
+            "High Kick",
+            "Low Punch",
+            "Block",
+            "Low Kick"
+        ],
+        "bg": "mk-bg.jpg",
+        "box": "mk-box.jpg"
+    },
+    {
+        "title": "Mortal Kombat 2",
+        "description": "Mortal Kombat II is an arcade fighting game developed and published by Midway in 1992. The game focuses on several characters of various intentions who enter a martial arts tournament with worldly consequences. It introduced many key aspects of the Mortal Kombat series, including the unique five-button control scheme and gory finishing moves called Fatalities.",
+        "rom": "mk2",
+        "bg": "mk2-bg.jpg",
+        "box": "mk2-box.jpg",
+        "logo": "mk2-logo.png",
+        "controls": [
+            "High Punch",
+            "Block",
+            "High Kick",
+            "Low Punch",
+            "Block",
+            "Low Kick"
+        ]
+    },
+    {
+        "title": "Mortal Kombat 3",
+        "description": "Mortal Kombat 3 is a fighting video game developed by Midway / Atari Games and first released into arcades in 1995. It is the third entry in the Mortal Kombat series and is the sequel to Mortal Kombat II. As in the previous games, it has a cast of characters that players choose from and guide through a series of battles against other opponents.",
+        "rom": "umk3",
+        "bg": "umk3-bg.jpg",
+        "box": "umk3-box.png",
+        "logo": "umk3-logo.png",
+        "controls": [
+            "High Punch",
+            "Block",
+            "High Kick",
+            "Low Punch",
+            "Block",
+            "Low Kick"
+        ]
+    },
+    {
+        "title": "Ms. Pac-man",
+        "description": "Ms. Pac-Man is a 1982 maze arcade game developed by General Computer Corporation and published by Midway. It is the first sequel to Pac-Man, and the first entry in the series to not be made by Namco. Controlling the titular character, the player is tasked with eating all of the pellets in an enclosed maze while avoiding four colored ghosts.",
+        "rom": "mspacman",
+        "bg": "mspacman-bg.jpg",
+        "box": "mspacman-box.jpg",
+        "logo": "mspacman-logo.png",
+        "controls": []
+    },
+    {
+        "title": "NBA JAM (2 Player co-op)",
+        "description": "NBA Jam is a long-running basketball video game series based on the National Basketball Association. Initially developed as arcade games by Midway, the game found popularity with its photo realistic digitized graphics, over-the-top presentation and style of two-on-two basketball play. Boomshakkalakka!",
+        "rom": "nbajam",
+        "bg": "nbajam-bg.jpg",
+        "box": "nbajam-box.jpg",
+        "logo": "nbajamr2-logo.png",
+        "controls": [
+            "Shoot/Block",
+            "Pass/Steal",
+            null,
+            "Turbo"
+        ]
+    },
+    {
+        "title": "NBA JAM (2 Player verses)",
+        "description": "NBA Jam is a long-running basketball video game series based on the National Basketball Association. Initially developed as arcade games by Midway, the game found popularity with its photo realistic digitized graphics, over-the-top presentation and style of two-on-two basketball play. Boomshakkalakka!",
+        "rom": "nbajamr2",
+        "bg": "nbajam2-bg.jpg",
+        "box": "nbajam-box.jpg",
+        "logo": "nbajam-logo.png",
+        "controls": [
+            "Shoot/Block",
+            "Pass/Steal",
+            null,
+            "Turbo"
+        ]
+    },
+    {
+        "title": "Paperboy",
+        "description": "Paperboy is an arcade action game developed and published by Atari Games and Midway Games, and released in 1985. The player takes the role of a paperboy who delivers a fictional newspaper called The Daily Sun along a suburban street on his bicycle. The arcade version of the game featured bike handlebars as the controller. The game was ported to many home systems beginning in 1986.",
+        "rom": "paperboy",
+        "bg": "paperboy-bg.jpg",
+        "box": "paperboy-box.jpg",
+        "logo": "paperboy-logo.png",
+        "controls": [
+            "Throw"
+        ]
+    },
+    {
+        "title": "Punch Out!!",
+        "description": "Punch-Out!! is an arcade boxing video game by Nintendo, developed in 1983 and released in February 1984. It was the first in a series of successful Punch-Out!! games. The arcade game was a global commercial success, becoming one of the top five highest-grossing arcade games of 1984 in the United States.",
+        "rom": "punchout",
+        "bg": "punchout-bg.jpg",
+        "box": "punchout-box.jpg",
+        "logo": "punchout-logo.png",
+        "controls": [
+            "Left Blow",
+            "Right Blow",
+            "Hook / Uppercut"
+        ]
+    },
+    {
+        "title": "R-Type",
+        "description": "R-Type is a side-scrolling shooter arcade video game developed and released by Irem in 1987. The player controls a star ship, the R-9 Arrowhead, in its efforts to destroy the Bydo, a powerful alien race bent on wiping out all of mankind.",
+        "rom": "rtype",
+        "bg": "rtype-bg.jpg",
+        "box": "rtype-box.jpg",
+        "logo": "rtype-logo.png",
+        "controls": [
+            "Attack"
+        ]
+    },
+    {
+        "title": "Ridge Racer",
+        "description": "Ridge Racer is a racing video game series developed and published for arcade systems and home game consoles by Bandai Namco Entertainment, formerly Namco. The first game, Ridge Racer, was originally released in arcades for the Namco System 22 hardware, later ported to the PlayStation two years later as a launch title.",
+        "rom": "ridgerac",
+        "bg": "ridgerac-bg.jpg",
+        "box": "ridgerac-box.jpg",
+        "logo": "ridgerac-logo.png",
+        "controls": [
+            "Brake",
+            "Gas"
+        ]
+    },
+    {
+        "title": "Soulcalibur",
+        "description": "Soulcalibur is a weapon-based fighting video game franchise by Bandai Namco Entertainment. There are seven main installments of video games and various media spin-offs, including music albums and a series of manga books.",
+        "rom": "soulclbr",
+        "bg": "soulcal-bg.jpg",
+        "box": "soulcal-box.jpg",
+        "logo": "soulcal-logo.png",
+        "controls": [
+            "Horizontal",
+            "Vertical",
+            "Kick",
+            "Guard"
+        ]
+    },
+    {
+        "title": "Street Fighter II",
+        "description": "Street Fighter II, is a competitive fighting game developed by Capcom and originally released for arcade systems in 1991. It is the second installment in the Street Fighter series and the sequel to Street Fighter, released in 1987",
+        "rom": "sf2ce",
+        "bg": "sf2-bg.jpg",
+        "box": "sf2-box.jpg",
+        "logo": "sf2-logo.png",
+        "controls": [
+            "Jab",
+            "Strong",
+            "Fierce",
+            "Short Kick",
+            "Forward",
+            "Roundhouse"
+        ]
+    },
+    {
+        "title": "Street Fighter III: New Generation",
+        "description": "Street Fighter III 3rd Strike: Fight for the Future is a 2D Competitive fighting game developed and published by Capcom, originally released for the arcades in 1999. It was ported to the Dreamcast, PlayStation 2, and Xbox between 2000 and 2010.",
+        "rom": "sfiiin",
+        "bg": "sfiiin-bg.jpg",
+        "box": "sfiiin-box.jpg",
+        "logo": "sfiiin-logo.png",
+        "controls": [
+            "Jab",
+            "Strong",
+            "Fierce",
+            "Short Kick",
+            "Forward",
+            "Roundhouse"
+        ]
+    },
+    {
+        "title": "Teenage Mutant Ninja Turtles Arcade",
+        "description": "Teenage Mutant Ninja Turtles is a 1989 arcade game released by Konami[3] and based on the first Teenage Mutant Ninja Turtles animated series that began airing two years earlier. In the game, up to four players control the titular Ninja Turtles, fighting through various levels to defeat the turtles' enemies, including the Shredder, Krang and the Foot Clan.",
+        "rom": "tmnt2po",
+        "bg": "tmnt-bg.jpg",
+        "box": "tmnt-box.jpg",
+        "logo": "tmnt-logo.png",
+        "controls": [
+            "Jump",
+            "Attack"
+        ]
+    },
+    {
+        "title": "Teenage Mutant Ninja Turtles Arcade: Turtles in Time",
+        "description": "Teenage Mutant Ninja Turtles: Turtles in Time, released as Teenage Mutant Hero Turtles: Turtles in Time in Europe, is an arcade video game produced by Konami. A sequel to the original Teenage Mutant Ninja Turtles arcade game, it is a scrolling beat 'em up type game based mainly on the 1987 TMNT animated.",
+        "rom": "tmht22pe",
+        "bg": "tmnttit-bg.jpg",
+        "box": "tmnttit-box.jpg",
+        "logo": "tmnttit-logo.png",
+        "controls": [
+            "Jump",
+            "Attack"
+        ]
+    },
+    {
+        "title": "Tekken 3",
+        "description": "Tekken 3 is a fighting game, the third entry in the Tekken series. It was released in arcades in March 1997, and for the PlayStation in 1998. The original arcade version of the game was released in 2005 for the PlayStation 2 as part of Tekken 5's Arcade History mode.",
+        "rom": "tekken3ua",
+        "bg": "tekken3-bg.jpg",
+        "box": "tekken3-box.jpg",
+        "logo": "tekken3-logo.png",
+        "controls": [
+            "Punch Left",
+            "Punch Right",
+            null,
+            "Kick Left",
+            "Kick Right"
+        ]
+    },
+    {
+        "title": "Tekken Tag",
+        "description": "Tekken Tag Tournament is a spin-off of the Namco's Tekken fighting game series. It is the fourth installment in the Tekken fighting game series. Tekken Tag Tournament was released as an arcade game in 1999. before becoming a North American and European launch title for the PlayStation 2 in 2000.",
+        "rom": "tektagt",
+        "bg": "tektagt-bg.jpg",
+        "box": "tektagt-box.jpg",
+        "logo": "tektagt-logo.png",
+        "controls": [
+            "Punch Left",
+            "Punch Right",
+            "Tag Out",
+            "Kick Left",
+            "Kick Right"
+        ]
+    },
+    {
+        "title": "The Simpsons",
+        "description": "The Simpsons Arcade Game is a Beat 'em up game produced by Konami in 1991. Play The Simpsons Arcade Game online! The Simpsons Arcade Game game description. Waylon Smithers has just stolen a diamond from Springfield Jewelers for Mr. Burns. While trying to make a getaway, he crashes into Homer, which knocks the diamond out of his hand.",
+        "rom": "simpsons2p",
+        "bg": "simpsons-bg.jpg",
+        "logo": "simpsons-logo.png",
+        "controls": [
+            "Attack",
+            "Jump"
+        ]
+    },
+    {
+        "title": "X-MEN",
+        "description": "X-Men  is a side-scrolling beat 'em up game produced and released by Konami for arcades in 1992, based on the Marvel Comics superhero team of the same name. The character designs of the characters in the game are based on the 1989 cartoon X-Men: Pryde of the X-Men.",
+        "rom": "xmen2pa",
+        "bg": "xmen-bg.jpg",
+        "box": "xmen-box.jpg",
+        "logo": "xmen-logo.png",
+        "controls": [
+            "Mutant",
+            null,
+            null,
+            "Attack",
+            "Jump"
+        ]
+    },
+    {
+        "title": "X-Men: Children of the Atom",
+        "description": "X-Men: Children of the Atom is an arcade game that was produced by Capcom and released on the CP System II arcade hardware in 1994 in Japan and in 1995 in North America and Europe. Based on the X-Men comic book, it is the first fighting game produced by Capcom using characters under license from Marvel Comics.",
+        "rom": "xmcota",
+        "bg": "xmcotar1-bg.jpg",
+        "box": "xmcotar1-box.jpg",
+        "logo": "xmcotar1-logo.png",
+        "controls": [
+            "Jab",
+            "Strong",
+            "Fierce",
+            "Short Kick",
+            "Forward",
+            "Roundhouse"
+        ]
+    }
+]
