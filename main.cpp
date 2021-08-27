@@ -27,9 +27,9 @@ int main()
 
   const string fontFilename = path + "/RobotoCondensed-Regular.ttf";
   // Window
-  sf::RenderWindow window(sf::VideoMode(), "Arcade Runner", sf::Style::Fullscreen);
+  // sf::RenderWindow window(sf::VideoMode(), "Arcade Runner", sf::Style::Fullscreen);
   // DEV
-  // sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
+  sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
 
   const float screenWidth = 2560;
   const float screenHeight = 1440;
@@ -80,7 +80,7 @@ int main()
   int buttonVectorSize = 6;
 
   // Color
-  sf::Color darkGreyColor = sf::Color(0, 0, 0, 180);
+  sf::Color darkGreyColor = sf::Color(0, 0, 0, 190);
 
   //Declare a Font object
   sf::Font font;
@@ -91,7 +91,7 @@ int main()
 
   // Black Background
   sf::RectangleShape blackBackgroundRectangle;
-  blackBackgroundRectangle.setSize(sf::Vector2f(screenWidth * (pageSize + 1), screenHeight));
+  blackBackgroundRectangle.setSize(sf::Vector2f(screenWidth, screenHeight * (pageSize / boxPerPage)));
   blackBackgroundRectangle.setFillColor(sf::Color::Black);
   blackBackgroundRectangle.move(sf::Vector2f(0, 0));
 
@@ -117,7 +117,6 @@ int main()
   vector<sf::Text> titleText(jsonObjSize);
   vector<sf::Text> descriptionText(jsonObjSize);
 
-  vector<sf::RectangleShape> fadeEffect(jsonObjSize);
 
   // Build Each Game Page
   for (size_t i = 0; i < obj.size(); i++)
@@ -173,9 +172,6 @@ int main()
     descriptionText[i].move(sf::Vector2f(textLeft, (i * boxHeight) + 138));
 
     // Effect
-    fadeEffect[i].setSize(sf::Vector2f(screenWidth, boxHeight));
-    fadeEffect[i].setFillColor(sf::Color(darkGreyColor));
-    fadeEffect[i].move(sf::Vector2f(0, boxHeight * i));
     index++;
   }
 
@@ -259,11 +255,26 @@ int main()
   /*
   Window Running
   */
+  float delta = 120;
+  bool isDeltaInc = true;
   while (window.isOpen())
   {
     sf::Event event;
-    float alpha = 1.4 * frame;
-    fadeEffect[pageNumber].setFillColor(sf::Color(0, 0, 0, -1 * alpha));
+
+    if (isDeltaInc) {
+      delta++;
+      if (delta == 255) {
+        isDeltaInc = false;
+      }
+    }
+    else
+    {
+      delta--;
+      if (delta == 120) {
+        isDeltaInc = true;
+      }
+    }
+    highlightRect.setOutlineColor(sf::Color(240, 240, 120, delta));
 
     string instructionsText = to_string(pageNumber + 1) + " of " + to_string(pageSize + 1);
     instructions.setString(instructionsText);
@@ -272,7 +283,6 @@ int main()
     // Down
     if (animationDirection == Down && frame < frameRate)
     {
-      fadeEffect[pageNumber - 1].setFillColor(sf::Color(0, 0, 0, alpha));
       highlightRect.move(0, boxHeight / frameRate);
       if (pageNumber != 1 && pageNumber != pageSize && pageNumber != (pageSize - 1))
       {
@@ -283,7 +293,6 @@ int main()
     // Up
     else if (animationDirection == Up && frame < frameRate)
     {
-      fadeEffect[pageNumber + 1].setFillColor(sf::Color(0, 0, 0, alpha));
       highlightRect.move(0, -1 * (boxHeight / frameRate));
       if (pageNumber != 0 && pageNumber != (pageSize - 1) && pageNumber != (pageSize - 2))
       {
@@ -294,7 +303,6 @@ int main()
     // Full Down
     else if (animationDirection == FullDown && frame < frameRate)
     {
-      fadeEffect[0].setFillColor(sf::Color(0, 0, 0, alpha));
       highlightRect.move(0, (boxHeight * pageSize) / frameRate);
       mainView.move(0, (boxHeight * (pageSize - 3)) / frameRate);
       frame++;
@@ -302,7 +310,6 @@ int main()
     // Full Up
     else if (animationDirection == FullUp && frame < frameRate)
     {
-      fadeEffect[pageSize].setFillColor(sf::Color(0, 0, 0, alpha));
       highlightRect.move(0, -1 * (boxHeight * pageSize) / frameRate);
       mainView.move(0, -1 * (boxHeight * (pageSize - 3)) / frameRate);
       frame++;
@@ -316,7 +323,6 @@ int main()
       {
         if (pageNumber != i)
         {
-          fadeEffect[i].setFillColor(darkGreyColor);
         }
       }
     }
@@ -327,6 +333,7 @@ int main()
       bool joystickUp = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
       bool joystickDown = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == 100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
       bool selectButtonPressed = sf::Joystick::isButtonPressed(0, 1) || sf::Joystick::isButtonPressed(1, 1);
+
       // Next: Down
       if (
         joystickDown &&
@@ -362,12 +369,11 @@ int main()
         }
       }
 
-      cout << event.key.code << endl;
       // Open Modal
       if (event.JoystickButtonReleased) {
         if (event.key.code == 6)
         {
-          // Set Title
+          // Open Modal if close, else open
           if (isModalOpen == true)
           {
             isModalOpen = false;
@@ -382,15 +388,12 @@ int main()
           for (int i = 0; i < 6; i++)
           {
             controlLabel[i].setString("");
-            // controlSprite[i].setColor(sf::Color(200, 200, 255, 150));
           }
           // Add new labels
           for (int i = 0; i < obj[pageNumber]["controls"].size(); i++)
           {
             controlLabel[i].setString(obj[pageNumber]["controls"][i].asString());
-            // controlSprite[i].setColor(sf::Color(255, 255, 255));
           }
-          // isModalOpen = true;
         }
       }
 
@@ -419,7 +422,7 @@ int main()
       window.draw(backgroundSprite[i]);
       window.draw(titleText[i]);
       window.draw(descriptionText[i]);
-      window.draw(fadeEffect[i]);
+      // TODO: Fix fade effect
       window.draw(logoSprite[i]);
     }
     window.draw(highlightRect);
