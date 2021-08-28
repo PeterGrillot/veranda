@@ -5,7 +5,7 @@ rm main.o readJson.o
 mkdir -p veranda-app
 mkdir -p veranda-app/assets/
 cp assets/* veranda-app/assets/
-cp data.json veranda-app/
+cp mame.json veranda-app/
 mv veranda veranda-app/
 cp RobotoCondensed-Regular.ttf veranda-app/
 zip -r veranda-app.zip veranda-app/

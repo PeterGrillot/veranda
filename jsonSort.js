@@ -1,6 +1,7 @@
 const fs = require('fs');
 
-const PATH = './data.json';
+const FILE_NAME = process.argv[2]
+const PATH = `./${FILE_NAME}.json`;
 const FILE_TYPE = 'utf8';
 
 function sortBy (key, cb) {

@@ -6,8 +6,22 @@
         "bg": "bubbob-bg.jpg",
         "box": "bubbob-box.jpg",
         "logo": "bubbob-logo.png",
+        "category": "maze",
         "controls": [
             "Bubble",
+            "Jump"
+        ]
+    },
+    {
+        "title": "Cadillacs and Dinosaurs",
+        "description": "Cadillacs and Dinosaurs, released in Japan as Cadillacs Kyouryuu Shinseiki, is a 1993 arcade game by Capcom. It is a side-scrolling beat 'em up based on the comic book series Xenozoic Tales. The game was produced as a tie-in to the short-lived Cadillacs and Dinosaurs animated series which was aired during the same year the game was released. A version for the Capcom Power System Changer was planned and previewed but never released.",
+        "rom": "dino",
+        "bg": "dino-bg.jpg",
+        "box": "dino-box.jpg",
+        "logo": "dino-logo.png",
+        "category": "beat-em-up",
+        "controls": [
+            "Attack",
             "Jump"
         ]
     },
@@ -18,6 +32,7 @@
         "bg": "dk-bg.jpg",
         "box": "dk-box.jpg",
         "logo": "dk-logo.png",
+        "category": "platform",
         "controls": [
             "Jump"
         ]
@@ -29,6 +44,7 @@
         "bg": "ffight-bg.jpg",
         "box": "ffight-box.jpg",
         "logo": "ffight-logo.png",
+        "category": "beat-em-up",
         "controls": [
             "Jump"
         ]
@@ -40,10 +56,25 @@
         "bg": "gauntlet-bg.jpg",
         "box": "gauntlet-box.jpg",
         "logo": "gauntlet-logo.png",
+        "category": "maze",
         "controls": [
             "Attack",
             "Magic"
         ]
+    },
+    {
+        "title": "Golden Axe",
+        "description": "Golden Axe is a side-scrolling arcade beat 'em up game released in 1989 by Sega. Makoto Uchida was the primary developer of the game and also was responsible for the creation of Altered Beast.The game places the player in control of one of three warriors each bent on revenge against the vile dictator Death Adder.",
+        "rom": "goldnaxe1",
+        "bg": "goldenaxe-bg.jpg",
+        "logo": "goldenaxe-logo.png",
+        "category": "beat-em-up",
+        "controls": [
+            "Attack",
+            "Jump",
+            "Magic"
+        ],
+        "box": "goldenaxe-box.jpg"
     },
     {
         "title": "Golden Axe II: The Revenge of Death Adder",
@@ -51,6 +82,7 @@
         "rom": "ga2",
         "bg": "ga2-bg.jpg",
         "logo": "ga2-logo.png",
+        "category": "beat-em-up",
         "controls": [
             "Attack",
             "Jump",
@@ -65,6 +97,7 @@
         "bg": "gradius-bg.jpg",
         "box": "gradius-box.jpg",
         "logo": "gradius-logo.png",
+        "category": "shooter",
         "controls": [
             "Select",
             "Fire"
@@ -77,6 +110,7 @@
         "bg": "gradius3-bg.jpg",
         "box": "gradius3-box.jpg",
         "logo": "gradius3-logo.png",
+        "category": "shooter",
         "controls": [
             "Select",
             "Fire"
@@ -89,6 +123,7 @@
         "bg": "mvcu-bg.jpg",
         "box": "mvcu-box.jpg",
         "logo": "mvcu-logo.png",
+        "category": "vs",
         "controls": [
             "Jab",
             "Strong",
@@ -103,6 +138,7 @@
         "description": "Mortal Kombat is an arcade fighting game developed and published by Midway in 1992. The game focuses on several characters of various intentions who enter a martial arts tournament with worldly consequences. It introduced many key aspects of the Mortal Kombat series, including the unique five-button control scheme and gory finishing moves called Fatalities.",
         "rom": "mkla1",
         "logo": "mk-logo.png",
+        "category": "vs",
         "controls": [
             "High Punch",
             "Block",
@@ -121,6 +157,7 @@
         "bg": "mk2-bg.jpg",
         "box": "mk2-box.jpg",
         "logo": "mk2-logo.png",
+        "category": "vs",
         "controls": [
             "High Punch",
             "Block",
@@ -137,6 +174,7 @@
         "bg": "umk3-bg.jpg",
         "box": "umk3-box.png",
         "logo": "umk3-logo.png",
+        "category": "vs",
         "controls": [
             "High Punch",
             "Block",
@@ -144,6 +182,21 @@
             "Low Punch",
             "Block",
             "Low Kick"
+        ]
+    },    {
+        "title": "Garou - Mark of the Wolves",
+        "description": "Mortal Kombat 3 is a fighting video game developed by Midway / Atari Games and first released into arcades in 1995. It is the third entry in the Mortal Kombat series and is the sequel to Mortal Kombat II. As in the previous games, it has a cast of characters that players choose from and guide through a series of battles against other opponents.",
+        "rom": "garou",
+        "bg": "garou-bg.jpg",
+        "box": "garou-box.png",
+        "logo": "garou-logo.png",
+        "category": "vs",
+        "controls": [
+            "Weak Punch",
+            "Weak Kick",
+            "1st and 2nd - Block\n3rd and 4th - T.O.P Attack",
+            "Strong Punch",
+            "Strong Kick"
         ]
     },
     {
@@ -153,6 +206,7 @@
         "bg": "mspacman-bg.jpg",
         "box": "mspacman-box.jpg",
         "logo": "mspacman-logo.png",
+        "category": "maze",
         "controls": []
     },
     {
@@ -162,6 +216,7 @@
         "bg": "nbajam-bg.jpg",
         "box": "nbajam-box.jpg",
         "logo": "nbajamr2-logo.png",
+        "category": "sports",
         "controls": [
             "Shoot/Block",
             "Pass/Steal",
@@ -176,11 +231,25 @@
         "bg": "nbajam2-bg.jpg",
         "box": "nbajam-box.jpg",
         "logo": "nbajam-logo.png",
+        "category": "sports",
         "controls": [
             "Shoot/Block",
             "Pass/Steal",
             null,
             "Turbo"
+        ]
+    },
+    {
+        "title": "Neo Drift Out: New Generation",
+        "description": "Neo Drift Out: New Technology is a 1996 rallying video game developed by Visco Corporation for the Neo Geo and Neo Geo CD. It is the fourth title in the Drift Out series. Though it follows Super Drift Out: World Rally Championships, it is closer to the earlier Drift Out '94: The Hard Order.",
+        "rom": "neodrift",
+        "bg": "neodrift-bg.jpg",
+        "box": "neodrift-box.jpg",
+        "logo": "neodrift-logo.png",
+        "category": "racing",
+        "controls": [
+            "Brake",
+            "Gas"
         ]
     },
     {
@@ -190,6 +259,7 @@
         "bg": "paperboy-bg.jpg",
         "box": "paperboy-box.jpg",
         "logo": "paperboy-logo.png",
+        "category": "platform",
         "controls": [
             "Throw"
         ]
@@ -201,6 +271,7 @@
         "bg": "punchout-bg.jpg",
         "box": "punchout-box.jpg",
         "logo": "punchout-logo.png",
+        "category": "vs",
         "controls": [
             "Left Blow",
             "Right Blow",
@@ -214,6 +285,7 @@
         "bg": "rtype-bg.jpg",
         "box": "rtype-box.jpg",
         "logo": "rtype-logo.png",
+        "category": "shooter",
         "controls": [
             "Attack"
         ]
@@ -225,6 +297,7 @@
         "bg": "ridgerac-bg.jpg",
         "box": "ridgerac-box.jpg",
         "logo": "ridgerac-logo.png",
+        "category": "racing",
         "controls": [
             "Brake",
             "Gas"
@@ -237,6 +310,7 @@
         "bg": "soulcal-bg.jpg",
         "box": "soulcal-box.jpg",
         "logo": "soulcal-logo.png",
+        "category": "vs",
         "controls": [
             "Horizontal",
             "Vertical",
@@ -251,6 +325,7 @@
         "bg": "sf2-bg.jpg",
         "box": "sf2-box.jpg",
         "logo": "sf2-logo.png",
+        "category": "vs",
         "controls": [
             "Jab",
             "Strong",
@@ -267,6 +342,7 @@
         "bg": "sfiiin-bg.jpg",
         "box": "sfiiin-box.jpg",
         "logo": "sfiiin-logo.png",
+        "category": "vs",
         "controls": [
             "Jab",
             "Strong",
@@ -283,6 +359,7 @@
         "bg": "tmnt-bg.jpg",
         "box": "tmnt-box.jpg",
         "logo": "tmnt-logo.png",
+        "category": "beat-em-up",
         "controls": [
             "Jump",
             "Attack"
@@ -295,6 +372,7 @@
         "bg": "tmnttit-bg.jpg",
         "box": "tmnttit-box.jpg",
         "logo": "tmnttit-logo.png",
+        "category": "beat-em-up",
         "controls": [
             "Jump",
             "Attack"
@@ -307,6 +385,7 @@
         "bg": "tekken3-bg.jpg",
         "box": "tekken3-box.jpg",
         "logo": "tekken3-logo.png",
+        "category": "vs",
         "controls": [
             "Punch Left",
             "Punch Right",
@@ -322,6 +401,7 @@
         "bg": "tektagt-bg.jpg",
         "box": "tektagt-box.jpg",
         "logo": "tektagt-logo.png",
+        "category": "vs",
         "controls": [
             "Punch Left",
             "Punch Right",
@@ -336,9 +416,27 @@
         "rom": "simpsons2p",
         "bg": "simpsons-bg.jpg",
         "logo": "simpsons-logo.png",
+        "category": "beat-em-up",
         "controls": [
             "Attack",
             "Jump"
+        ]
+    },
+    {
+        "title": "Vampire Savior: The Lord of Vampire",
+        "description": "Vampire Savior: The Lord of Vampire (alternatively called Darkstalkers 3) was released in arcades in 1997. Vampire Savior is the third installment in the Darkstalkers' series and featured four new characters. The game also spawned two updated titles, Vampire Hunter 2 and Vampire Savior 2, with both being released several months after the Vampire Savior.",
+        "rom": "vsavj",
+        "bg": "vsavj-bg.jpg",
+        "box": "vsavj-box.jpg",
+        "logo": "vsavj-logo.png",
+        "category": "vs",
+        "controls": [
+            "Jab",
+            "Strong",
+            "Fierce",
+            "Short Kick",
+            "Forward",
+            "Roundhouse"
         ]
     },
     {
@@ -348,6 +446,7 @@
         "bg": "xmen-bg.jpg",
         "box": "xmen-box.jpg",
         "logo": "xmen-logo.png",
+        "category": "beat-em-up",
         "controls": [
             "Mutant",
             null,
@@ -363,6 +462,7 @@
         "bg": "xmcotar1-bg.jpg",
         "box": "xmcotar1-box.jpg",
         "logo": "xmcotar1-logo.png",
+        "category": "vs",
         "controls": [
             "Jab",
             "Strong",

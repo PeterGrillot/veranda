@@ -27,9 +27,9 @@ int main()
 
   const string fontFilename = path + "/RobotoCondensed-Regular.ttf";
   // Window
-  // sf::RenderWindow window(sf::VideoMode(), "Arcade Runner", sf::Style::Fullscreen);
+  sf::RenderWindow window(sf::VideoMode(), "Arcade Runner", sf::Style::Fullscreen);
   // DEV
-  sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
+  // sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
 
   const float screenWidth = 2560;
   const float screenHeight = 1440;
@@ -51,7 +51,7 @@ int main()
   sound.setBuffer(buffer);
 
   // Get JSON
-  Json::Value obj = readJson(path);
+  Json::Value obj = readJson(path + "/mame.json");
 
   // Pagination
   int index = 0;
@@ -74,13 +74,16 @@ int main()
   bool isModalOpen = false;
 
   // Layout
-  int logoLeft = 280;
-  int textLeft = 980;
+  int logoLeft = 190;
+  int textLeft = 820;
+  int categoryIconLeft = 2300;
+  int paginationLeft = categoryIconLeft + 24;
   int wordWrap = 110;
   int buttonVectorSize = 6;
 
   // Color
   sf::Color darkGreyColor = sf::Color(0, 0, 0, 190);
+  sf::Color darkPurpleColor = sf::Color(30, 8, 30, 190);
 
   //Declare a Font object
   sf::Font font;
@@ -117,6 +120,9 @@ int main()
   vector<sf::Text> titleText(jsonObjSize);
   vector<sf::Text> descriptionText(jsonObjSize);
 
+  vector<sf::Texture> categoryTexture(jsonObjSize);
+  vector<sf::Sprite> categorySprite(jsonObjSize);
+  vector<sf::CircleShape> categoryDisc(jsonObjSize);
 
   // Build Each Game Page
   for (size_t i = 0; i < obj.size(); i++)
@@ -144,6 +150,19 @@ int main()
 
     int calcHeight = i * boxHeight + (boxHeight / 2) - logoTexture[i].getSize().y / 2;
     logoSprite[i].move(sf::Vector2f(logoLeft, calcHeight));
+
+    // Category
+    ostringstream categoryPath;
+    categoryPath << path << "/assets/" << obj[index]["category"].asString() << ".png";
+    if (!categoryTexture[i].loadFromFile(categoryPath.str()))
+      return -1;
+    categoryTexture[i].setSmooth(true);
+    categorySprite[i].setTexture(categoryTexture[i]);
+
+    categorySprite[i].setPosition(sf::Vector2f(categoryIconLeft + 20, i * boxHeight + ((boxHeight - 100) / 2)));
+    categoryDisc[i].setRadius(70);
+    categoryDisc[i].setFillColor(darkPurpleColor);
+    categoryDisc[i].setPosition(sf::Vector2f(categoryIconLeft, i * boxHeight + ((boxHeight - 140) / 2)));
 
     // Title Text
     titleText[i].setFont(font);
@@ -185,17 +204,17 @@ int main()
   guiView.setCenter(sf::Vector2f(screenWidth / 2, screenHeight / 2));
   guiView.setSize(sf::Vector2f(screenWidth, screenHeight));
 
-  // Build GUI
-  sf::Text instructions;
-  instructions.setFont(font);
-  instructions.setCharacterSize(32);
-  instructions.setFillColor(sf::Color::White);
-  instructions.move(sf::Vector2f(screenWidth - 120, screenHeight - 90));
+  // Build pagination
+  sf::Text pagination;
+  pagination.setFont(font);
+  pagination.setCharacterSize(32);
+  pagination.setFillColor(sf::Color::White);
+  pagination.move(sf::Vector2f(paginationLeft, screenHeight - 90));
 
   // Modal
   sf::RectangleShape modalBackground;
   int modalMargin = 120;
-  modalBackground.setFillColor(sf::Color(20, 0, 20, 200));
+  modalBackground.setFillColor(sf::Color(darkPurpleColor));
   modalBackground.setSize(sf::Vector2f(screenWidth - (modalMargin * 2), screenHeight - (modalMargin * 2)));
   modalBackground.move(sf::Vector2f(modalMargin, modalMargin));
 
@@ -255,6 +274,7 @@ int main()
   /*
   Window Running
   */
+  // Animate Highlight Box
   float delta = 120;
   bool isDeltaInc = true;
   while (window.isOpen())
@@ -276,8 +296,9 @@ int main()
     }
     highlightRect.setOutlineColor(sf::Color(240, 240, 120, delta));
 
-    string instructionsText = to_string(pageNumber + 1) + " of " + to_string(pageSize + 1);
-    instructions.setString(instructionsText);
+    // Set Pagination
+    string paginationText = to_string(pageNumber + 1) + " of " + to_string(pageSize + 1);
+    pagination.setString(paginationText);
 
     // Animate Direction
     // Down
@@ -370,8 +391,8 @@ int main()
       }
 
       // Open Modal
-      if (event.JoystickButtonReleased) {
-        if (event.key.code == 6)
+      if (event.JoystickButtonReleased || event.KeyReleased) {
+        if (event.key.code == 6 || event.key.code == 'o')
         {
           // Open Modal if close, else open
           if (isModalOpen == true)
@@ -413,17 +434,20 @@ int main()
         sf::Joystick::isButtonPressed(1, 4))
         window.close();
     }
+
     // Set up and draw
     window.clear();
     window.setView(mainView);
     window.draw(blackBackgroundRectangle);
+    // Game Box
     for (size_t i = 0; i < obj.size(); i++)
     {
       window.draw(backgroundSprite[i]);
       window.draw(titleText[i]);
       window.draw(descriptionText[i]);
-      // TODO: Fix fade effect
       window.draw(logoSprite[i]);
+      window.draw(categoryDisc[i]);
+      window.draw(categorySprite[i]);
     }
     window.draw(highlightRect);
     window.setView(guiView);
@@ -437,7 +461,7 @@ int main()
       }
       window.draw(controlTitle);
     }
-    window.draw(instructions);
+    window.draw(pagination);
     window.display();
   }
   return 0;

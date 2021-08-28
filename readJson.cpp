@@ -8,7 +8,7 @@ using namespace std;
 Json::Value readJson(string path)
 {
   // JSON
-  ifstream ifs(path + "/data.json");
+  ifstream ifs(path);
   Json::Reader reader;
   Json::Value obj;
   reader.parse(ifs, obj);
