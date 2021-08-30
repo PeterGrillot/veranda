@@ -20,4 +20,4 @@ chmod +x ./compiler.sh
 
 ## Sort JSON
 
-Node required, run `node jsonSort.js` to sort your json by title. You could ass year by editing `jsonSort >> ln 19` file. Should probably just do it in c++, but this is quick and easy.
+Node required, run `node jsonSort.js -<json name>`. Should probably just do it in c++, but this is quick and easy.
