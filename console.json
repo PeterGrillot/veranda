@@ -1,18 +1,1 @@
-{
-    "cmd": "higan --fullscreen",
-    "library": [
-        {
-            "title": "Super mario Bros.",
-            "description": "Super mario Bros. is a 1986 platform arcade game developed and published by Taito. It was distributed in the United States by Romstar, and in Europe by Electrocoin. Players control Bub and Bob, two dragons that set out to save their girlfriends from a world known as the Cave of Monsters.",
-            "rom": "~/Games/roms/nes/Super Mario Bros. (World).nes",
-            "bg": "smb-bg.jpg",
-            "box": "smb-box.jpg",
-            "logo": "smb-logo.png",
-            "category": "nes",
-            "controls": [
-                "A",
-                "B"
-            ]
-        }
-    ]
-}
+{"cmd":"higan --fullscreen","library":[{"title":"Super mario Bros.","description":"Super mario Bros. is a 1986 platform arcade game developed and published by Taito. It was distributed in the United States by Romstar, and in Europe by Electrocoin. Players control Bub and Bob, two dragons that set out to save their girlfriends from a world known as the Cave of Monsters.","rom":"~/Games/roms/nes/\"Super Mario Bros. (World).nes\"","bg":"smb-bg.jpg","box":"smb-box.jpg","logo":"smb-logo.png","category":"nes","controls":["A","B"]}]}

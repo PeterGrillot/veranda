@@ -50,12 +50,11 @@ void buildUI() {
   const string fontFilename = path + "/RobotoCondensed-Regular.ttf";
   ostringstream servicePath;
   servicePath << path << "/" << serviceType << ".json";
-  // Window
-  // sf::RenderWindow window(sf::VideoMode(), "Arcade Runner", sf::Style::Fullscreen);
-  // DEV
-  cout << servicePath.str() << endl;
 
-  sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
+  // Window
+  sf::RenderWindow window(sf::VideoMode(), "Veranda", sf::Style::Fullscreen);
+  // DEV
+  // sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
 
   const float screenWidth = 2560;
   const float screenHeight = 1440;
@@ -152,7 +151,7 @@ void buildUI() {
   vector<sf::CircleShape> categoryDisc(jsonObjSize);
 
   // Build Each Game Page
-  for (size_t i = 0; i < library.size(); i++)
+  for (size_t i = 0; i < jsonObjSize; i++)
   {
     int screenWidthOffset = screenWidth * i;
     // Background
@@ -454,9 +453,9 @@ void buildUI() {
       {
         isModalOpen = false;
         ostringstream romPath;
-        romPath << cmd << " \"" << library[pageNumber]["rom"].asString() << "\"";
-        cout << romPath.str() << endl;
+        romPath << cmd.asString() << " " << library[pageNumber]["rom"].asString();
         const char* command = romPath.str().c_str();
+        cout << romPath.str().c_str() << endl;
         system(command);
       }
 
@@ -466,13 +465,6 @@ void buildUI() {
         sf::Joystick::isButtonPressed(1, 4))
         window.close();
 
-      // Next
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::N))
-      {
-        Service service = Console;
-        cout << service << endl;
-        cout << serviceType << endl;
-      }
     }
 
     // Set up and draw
@@ -480,7 +472,7 @@ void buildUI() {
     window.setView(mainView);
     window.draw(blackBackgroundRectangle);
     // Game Box
-    for (size_t i = 0; i < library.size(); i++)
+    for (size_t i = 0; i < jsonObjSize; i++)
     {
       window.draw(backgroundSprite[i]);
       window.draw(titleText[i]);
