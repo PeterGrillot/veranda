@@ -17,9 +17,8 @@ fs.readFile(PATH, FILE_TYPE, (rErr, data) => {
 
     // parse JSON string to JSON object
     const parsed = JSON.parse(data);
-    const sorted = parsed.sort(sortBy(['title']));
-    const jsonString = JSON.stringify(sorted);
-    console.log('Sorting...');
+    const sorted = parsed.library.sort(sortBy(['title']));
+    const jsonString = JSON.stringify({cmd: parsed.cmd, library: sorted});
     
     fs.writeFile(PATH, jsonString, (wErr) => {
       if(wErr) {
