@@ -29,7 +29,9 @@ void buildUI() {
     Mame,
     Console
   };
-  Service service = Console;
+
+  // Doesn't really work on the fly
+  Service service = Mame;
   string serviceType = "";
 
   switch (service)
