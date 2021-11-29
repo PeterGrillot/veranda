@@ -111,7 +111,7 @@ void buildUI() {
 
   // Color
   sf::Color darkGreyColor = sf::Color(0, 0, 0, 190);
-  sf::Color darkPurpleColor = sf::Color(30, 8, 30, 190);
+  sf::Color darkPurpleColor = sf::Color(30, 8, 30, 240);
 
   //Declare a Font object
   sf::Font font;
@@ -241,9 +241,11 @@ void buildUI() {
   pagination.setFillColor(sf::Color::White);
   pagination.move(sf::Vector2f(paginationLeft, screenHeight - 90));
 
-  // Modal
+  /*
+  /*  Modal
+  */
   sf::RectangleShape modalBackground;
-  int modalMargin = 120;
+  int modalMargin = 10;
   modalBackground.setFillColor(sf::Color(darkPurpleColor));
   modalBackground.setSize(sf::Vector2f(screenWidth - (modalMargin * 2), screenHeight - (modalMargin * 2)));
   modalBackground.move(sf::Vector2f(modalMargin, modalMargin));
@@ -252,20 +254,42 @@ void buildUI() {
   sf::Texture controlTexture;
   sf::Sprite controlSprite;
   vector<sf::Text> controlLabel(buttonVectorSize);
-
   string p1_bgPath = path + "/assets/controller.png";
+
+  // Select Button
+  sf::Texture selectTexture;
+  sf::Sprite selectSprite;
+  string select_bgPath = path + "/assets/select.png";
+
   int y1 = 1;
   int y2 = 1;
-  int buttonLeftMultiplier = 420;
-  int textMarginLeft = 650;
-  int textMarginTop = 180;
+  float buttonScale = 1.3;
+  int buttonLeftMultiplier = 220 * buttonScale;
+  int textMarginLeft = 820;
+  int textMarginTop = 370;
 
+  // Game Title
   sf::Text controlTitle;
   controlTitle.setFont(font);
   controlTitle.setString("");
-  controlTitle.setCharacterSize(62);
+  controlTitle.setCharacterSize(72);
   controlTitle.setFillColor(sf::Color::White);
-  controlTitle.setPosition(sf::Vector2f(200, 180));
+  controlTitle.setPosition(sf::Vector2f(200, 100));
+
+  // Select Instruction
+  sf::Text selectInstructions;
+  selectInstructions.setFont(font);
+  selectInstructions.setString("Either player may press their Start button to begin game. To exit while playing, either player can press their Exit button.");
+  selectInstructions.setCharacterSize(32);
+  selectInstructions.setFillColor(sf::Color::White);
+  selectInstructions.setPosition(sf::Vector2f(200, 210));
+  // Select Instruction
+  sf::Text selectLabel;
+  selectLabel.setFont(font);
+  selectLabel.setString("Start                    Exit");
+  selectLabel.setCharacterSize(42);
+  selectLabel.setFillColor(sf::Color::White);
+  selectLabel.setPosition(sf::Vector2f(990, 370));
 
   for (size_t i = 0; i < buttonVectorSize; i++)
   {
@@ -276,7 +300,7 @@ void buildUI() {
 
     if (i < 3) {
       if (i == 1) {
-        controlLabel[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * y1), 240 + textMarginTop));
+        controlLabel[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * y1), 280 + textMarginTop));
       }
       else {
         controlLabel[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * y1), 360 + textMarginTop));
@@ -285,10 +309,10 @@ void buildUI() {
     }
     else {
       if (i == 4) {
-        controlLabel[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * y2), 530 + textMarginTop));
+        controlLabel[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * y2), 470 + textMarginTop));
       }
       else {
-        controlLabel[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * y2), 650 + textMarginTop));
+        controlLabel[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * y2), 550 + textMarginTop));
       }
       y2++;
     }
@@ -297,9 +321,16 @@ void buildUI() {
   if (!controlTexture.loadFromFile(p1_bgPath, sf::IntRect(0, 0, 900, 509)))
     cout << "Error" << endl;
   controlTexture.setSmooth(true);
-  controlSprite.move(sf::Vector2f(400, 280));
+  controlSprite.move(sf::Vector2f(700, 580));
   controlSprite.setTexture(controlTexture);
-  controlSprite.scale(sf::Vector2f(2, 2));
+  controlSprite.scale(sf::Vector2f(buttonScale, buttonScale));
+
+  if (!selectTexture.loadFromFile(select_bgPath, sf::IntRect(0, 0, 900, 509)))
+    cout << "Error" << endl;
+  selectTexture.setSmooth(true);
+  selectSprite.move(sf::Vector2f(900, 420));
+  selectSprite.setTexture(selectTexture);
+  selectSprite.scale(sf::Vector2f(buttonScale, buttonScale));
 
   /*
   Window Running
@@ -484,11 +515,14 @@ void buildUI() {
     {
       window.draw(modalBackground);
       window.draw(controlSprite);
+      window.draw(selectSprite);
       for (size_t i = 0; i < buttonVectorSize; i++)
       {
         window.draw(controlLabel[i]);
       }
       window.draw(controlTitle);
+      window.draw(selectInstructions);
+      window.draw(selectLabel);
     }
     window.draw(pagination);
     window.display();
