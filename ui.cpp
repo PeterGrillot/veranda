@@ -370,12 +370,6 @@ void buildUI() {
 
       frame = 0;
       animationDirection = None;
-      for (size_t i = 0; i < jsonObjSize; i++)
-      {
-        if (pageNumber != i)
-        {
-        }
-      }
     }
 
     while (window.pollEvent(event))
@@ -384,6 +378,7 @@ void buildUI() {
       bool joystickUp = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
       bool joystickDown = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == 100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
       bool selectButtonPressed = sf::Joystick::isButtonPressed(0, 1) || sf::Joystick::isButtonPressed(1, 1);
+      bool coinButtonPressed = sf::Joystick::isButtonPressed(0, 6) || sf::Joystick::isButtonPressed(1, 6);
 
       // Next: Down
       if (
@@ -422,7 +417,7 @@ void buildUI() {
 
       // Open Modal
       if (event.JoystickButtonReleased || event.KeyReleased) {
-        if (event.key.code == 6 || event.key.code == 'o')
+        if (coinButtonPressed || event.key.code == 'o')
         {
           // Open Modal if close, else open
           if (isModalOpen == true)
