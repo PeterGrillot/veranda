@@ -16,23 +16,29 @@
 using namespace std;
 using namespace chrono;
 
-void buildUI() {
+enum Service {
+  Mame,
+  Console
+};
+
+// Declare First System
+Service service = Mame;
+string serviceType = "";
+
+
+// Window
+// sf::RenderWindow window(sf::VideoMode(), "Veranda", sf::Style::Fullscreen);
+
+// DEV
+sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
+
+int buildUI() {
 
   char result[PATH_MAX];
   ssize_t count = readlink("/proc/self/exe", result, PATH_MAX);
   string path;
-  if (count != -1) {
+  if (count != -1)
     path = dirname(result);
-
-  }
-  enum Service {
-    Mame,
-    Console
-  };
-
-  // Doesn't really work on the fly
-  Service service = Mame;
-  string serviceType = "";
 
   switch (service)
   {
@@ -52,11 +58,6 @@ void buildUI() {
   const string fontFilename = path + "/RobotoCondensed-Regular.ttf";
   ostringstream servicePath;
   servicePath << path << "/" << serviceType << ".json";
-
-  // Window
-  sf::RenderWindow window(sf::VideoMode(), "Veranda", sf::Style::Fullscreen);
-  // DEV
-  // sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
 
   const float screenWidth = 2560;
   const float screenHeight = 1440;
@@ -80,6 +81,7 @@ void buildUI() {
   // Get JSON
   Json::Value cmd = readJson(servicePath.str())["cmd"].asString();
   Json::Value library = readJson(servicePath.str())["library"];
+  cout << cmd << endl;
   // Pagination
   int index = 0;
   int pageNumber = 0;
@@ -99,6 +101,7 @@ void buildUI() {
   int animationDirection = None;
 
   bool isModalOpen = false;
+  bool isWindowActive = window.hasFocus();
 
   // Layout
   int logoLeft = 190;
@@ -150,7 +153,6 @@ void buildUI() {
 
   vector<sf::Texture> categoryTexture(jsonObjSize);
   vector<sf::Sprite> categorySprite(jsonObjSize);
-  vector<sf::CircleShape> categoryDisc(jsonObjSize);
 
   // Build Each Game Page
   for (size_t i = 0; i < jsonObjSize; i++)
@@ -190,9 +192,6 @@ void buildUI() {
     categorySprite[i].setTexture(categoryTexture[i]);
 
     categorySprite[i].setPosition(sf::Vector2f(categoryIconLeft + 20, i * boxHeight + ((boxHeight - 100) / 2)));
-    categoryDisc[i].setRadius(70);
-    categoryDisc[i].setFillColor(darkPurpleColor);
-    categoryDisc[i].setPosition(sf::Vector2f(categoryIconLeft, i * boxHeight + ((boxHeight - 140) / 2)));
 
     // Title Text
     titleText[i].setFont(font);
@@ -408,9 +407,15 @@ void buildUI() {
       // Events
       bool joystickUp = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
       bool joystickDown = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == 100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
-      bool selectButtonPressed = sf::Joystick::isButtonPressed(0, 1) || sf::Joystick::isButtonPressed(1, 1);
-      bool coinButtonPressed = sf::Joystick::isButtonPressed(0, 6) || sf::Joystick::isButtonPressed(1, 6);
+      bool isSelectPressed = sf::Joystick::isButtonPressed(0, 8) || sf::Joystick::isButtonPressed(1, 8) || sf::Keyboard::isKeyPressed(sf::Keyboard::Enter);
+      bool isCloseButtonPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Q) || sf::Joystick::isButtonPressed(0, 4) && sf::Joystick::isButtonPressed(1, 4);
+      bool isCoinButtonPressed = sf::Joystick::isButtonPressed(0, 6) || sf::Joystick::isButtonPressed(1, 6);
 
+      // Check if Active
+      if (isWindowActive)
+      {
+        window.setVisible(true);
+      }
       // Next: Down
       if (
         joystickDown &&
@@ -448,7 +453,7 @@ void buildUI() {
 
       // Open Modal
       if (event.JoystickButtonReleased || event.KeyReleased) {
-        if (coinButtonPressed || event.key.code == 'o')
+        if (isCoinButtonPressed || event.key.code == 'o')
         {
           // Open Modal if close, else open
           if (isModalOpen == true)
@@ -475,27 +480,54 @@ void buildUI() {
       }
 
       // Open Game
-      if (sf::Joystick::isButtonPressed(0, 8) ||
-        sf::Joystick::isButtonPressed(1, 8) ||
-        sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+      if (isSelectPressed)
       {
         isModalOpen = false;
-        ostringstream romPath;
-        romPath << cmd.asString() << " " << library[pageNumber]["rom"].asString();
-        const char* command = romPath.str().c_str();
-        cout << romPath.str().c_str() << endl;
+        // window.setSize(sf::Vector2u(2, 2));
+        window.setVisible(false);
+        string romPath;
+        romPath.append(cmd.asString());
+        romPath.append(" ");
+        romPath.append(library[pageNumber]["rom"].asString());
+        const char* command = romPath.c_str();
         system(command);
       }
 
       // Close
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) ||
-        sf::Joystick::isButtonPressed(0, 4) &&
-        sf::Joystick::isButtonPressed(1, 4))
+      if (isCloseButtonPressed)
         window.close();
 
-    }
+      // DEV: test char
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+      {
+        window.setSize(sf::Vector2u(0, 0));
+      }
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+      {
+        service = Console;
+        servicePath.str("");
+        servicePath.clear();
+        servicePath << path << "/console.json";
 
-    // Set up and draw
+        // Get JSON
+        cmd = readJson(servicePath.str())["cmd"].asString();
+        library = readJson(servicePath.str())["library"];
+        buildUI();
+      }
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+      {
+        service = Mame;
+        servicePath.str("");
+        servicePath.clear();
+        servicePath << path << "/mame.json";
+
+        // Get JSON
+        cmd = readJson(servicePath.str())["cmd"].asString();
+        library = readJson(servicePath.str())["library"];
+        buildUI();
+      }
+    }
+    // Draw
     window.clear();
     window.setView(mainView);
     window.draw(blackBackgroundRectangle);
@@ -506,7 +538,6 @@ void buildUI() {
       window.draw(titleText[i]);
       window.draw(descriptionText[i]);
       window.draw(logoSprite[i]);
-      window.draw(categoryDisc[i]);
       window.draw(categorySprite[i]);
     }
     window.draw(highlightRect);
@@ -527,4 +558,5 @@ void buildUI() {
     window.draw(pagination);
     window.display();
   }
+  return 0;
 }
