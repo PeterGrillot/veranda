@@ -62,7 +62,7 @@ void buildUI() {
   const float screenHeight = 1440;
   const int boxPerPage = 4;
   const float boxHeight = screenHeight / boxPerPage;
-  const int frameRate = 60;
+  const int frameRate = 8;
   // Window Settings
   window.setMouseCursorVisible(false);
   window.setKeyRepeatEnabled(false);
