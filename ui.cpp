@@ -62,13 +62,13 @@ void buildUI() {
   const float screenHeight = 1440;
   const int boxPerPage = 4;
   const float boxHeight = screenHeight / boxPerPage;
-  const int frameRate = 8;
+  const int frameRate = 6;
   // Window Settings
   window.setMouseCursorVisible(false);
   window.setKeyRepeatEnabled(false);
 
-  // Speen
-  window.setFramerateLimit(frameRate * 4);
+  // Speed
+  window.setFramerateLimit(frameRate * 5);
 
   // Sound
   sf::SoundBuffer buffer;
@@ -341,21 +341,6 @@ void buildUI() {
   while (window.isOpen())
   {
     sf::Event event;
-
-    if (isDeltaInc) {
-      delta++;
-      if (delta == 255) {
-        isDeltaInc = false;
-      }
-    }
-    else
-    {
-      delta--;
-      if (delta == 120) {
-        isDeltaInc = true;
-      }
-    }
-    highlightRect.setOutlineColor(sf::Color(240, 240, 120, delta));
 
     // Set Pagination
     string paginationText = to_string(pageNumber + 1) + " of " + to_string(pageSize + 1);
