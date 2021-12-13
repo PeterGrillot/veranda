@@ -19,6 +19,4 @@ int main()
 {
 
   buildUI();
-
-  return 0;
 }
