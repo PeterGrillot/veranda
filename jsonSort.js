@@ -1,6 +1,7 @@
 const fs = require('fs');
 
-const FILE_NAME = process.argv[2]
+const FILE_NAME = process.argv[2];
+const SORT_BY = process.argv[3];
 const PATH = `./${FILE_NAME}.json`;
 const FILE_TYPE = 'utf8';
 
@@ -17,7 +18,11 @@ fs.readFile(PATH, FILE_TYPE, (rErr, data) => {
 
     // parse JSON string to JSON object
     const parsed = JSON.parse(data);
-    const sorted = parsed.library.sort(sortBy(['title']));
+    let keyToSortBy = 'title';
+    if (SORT_BY) {
+      keyToSortBy = SORT_BY;
+    }
+    const sorted = parsed.library.sort(sortBy([keyToSortBy]));
     const jsonString = JSON.stringify({cmd: parsed.cmd, library: sorted});
     
     fs.writeFile(PATH, jsonString, (wErr) => {

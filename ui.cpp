@@ -24,13 +24,14 @@ enum Service {
 // Declare First System
 Service service = Mame;
 string serviceType = "";
+string serviceName = "";
 
 
 // Window
-// sf::RenderWindow window(sf::VideoMode(), "Veranda", sf::Style::Fullscreen);
+sf::RenderWindow window(sf::VideoMode(), "Veranda", sf::Style::Fullscreen);
 
 // DEV
-sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
+// sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
 
 int buildUI() {
 
@@ -44,10 +45,12 @@ int buildUI() {
   {
   case Console:
     serviceType = "console";
+    serviceName = "Console Games";
     break;
 
   case Mame:
     serviceType = "mame";
+    serviceName = "Arcade Games";
     break;
 
 
@@ -81,7 +84,6 @@ int buildUI() {
   // Get JSON
   Json::Value cmd = readJson(servicePath.str())["cmd"].asString();
   Json::Value library = readJson(servicePath.str())["library"];
-  cout << cmd << endl;
   // Pagination
   int index = 0;
   int pageNumber = 0;
@@ -104,7 +106,7 @@ int buildUI() {
   bool isWindowActive = window.hasFocus();
 
   // Layout
-  int logoLeft = 190;
+  int artLeft = 400;
   int textLeft = 820;
   int categoryIconLeft = 2300;
   int paginationLeft = categoryIconLeft + 24;
@@ -115,6 +117,7 @@ int buildUI() {
   // Color
   sf::Color darkGreyColor = sf::Color(0, 0, 0, 190);
   sf::Color darkPurpleColor = sf::Color(30, 8, 30, 240);
+  sf::Color lazerBlue = sf::Color(80, 255, 200);
 
   //Declare a Font object
   sf::Font font;
@@ -133,10 +136,37 @@ int buildUI() {
   int borderSize = 12;
   sf::RectangleShape highlightRect;
   highlightRect.setSize(sf::Vector2f(screenWidth - (borderSize * 2), boxHeight - (borderSize * 2)));
-  highlightRect.setFillColor(sf::Color(0, 0, 0, 0));
-  highlightRect.setOutlineColor(sf::Color(80, 255, 200));
+  highlightRect.setFillColor(sf::Color::Transparent);
+  highlightRect.setOutlineColor(lazerBlue);
   highlightRect.setOutlineThickness(borderSize);
   highlightRect.setPosition(sf::Vector2f(borderSize, borderSize));
+
+  // Game Type Box
+  sf::ConvexShape gameTypeBox;
+  int gameTypeBoxWidth = 80;
+  int gameTypeBoxHeight = 600;
+  int gameTypeBoxAngleWidth = 20;
+
+  // resize it to 5 points
+  gameTypeBox.setPointCount(4);
+
+  // define the points
+  gameTypeBox.setPoint(0, sf::Vector2f(0, 0));
+  gameTypeBox.setPoint(1, sf::Vector2f(gameTypeBoxWidth, gameTypeBoxWidth));
+  gameTypeBox.setPoint(2, sf::Vector2f(gameTypeBoxWidth, gameTypeBoxHeight - gameTypeBoxWidth));
+  gameTypeBox.setPoint(3, sf::Vector2f(0, gameTypeBoxHeight));
+  gameTypeBox.setPosition(sf::Vector2f(0, (screenHeight / 2 - (gameTypeBoxHeight / 2))));
+  gameTypeBox.setFillColor(darkPurpleColor);
+
+  // Game Type Label
+  sf::Text gameTypeLabel;
+  gameTypeLabel.setFont(font);
+  gameTypeLabel.setString(serviceName);
+  gameTypeLabel.setCharacterSize(54);
+  gameTypeLabel.setFillColor(lazerBlue);
+  size_t gameLabelSize = serviceName.length() * 13;
+  gameTypeLabel.move(8, (screenHeight / 2) + gameLabelSize);
+  gameTypeLabel.rotate(-90);
 
   // Var Vectors
   vector<sf::Texture> backgroundTexture(jsonObjSize);
@@ -145,8 +175,8 @@ int buildUI() {
   vector<sf::Sprite> boxSprite(jsonObjSize);
   vector<sf::Texture> boxTexture(jsonObjSize);
 
-  vector<sf::Sprite> logoSprite(jsonObjSize);
-  vector<sf::Texture> logoTexture(jsonObjSize);
+  vector<sf::Sprite> artSprite(jsonObjSize);
+  vector<sf::Texture> artTexture(jsonObjSize);
 
   vector<sf::Text> titleText(jsonObjSize);
   vector<sf::Text> descriptionText(jsonObjSize);
@@ -166,22 +196,23 @@ int buildUI() {
       cout << "Error" << endl;
     backgroundSprite[i].scale(sf::Vector2f(backgroundScaleFactor, backgroundScaleFactor));
     backgroundTexture[i].setSmooth(true);
-    backgroundTexture[i].setSmooth(true);
     backgroundSprite[i].setTexture(backgroundTexture[i]);
     backgroundSprite[i].move(sf::Vector2f(0, boxHeight * i));
     backgroundSprite[i].setTextureRect(sf::IntRect(0, 0, screenWidth, boxHeight / backgroundScaleFactor));
 
-    // Logo
+    // art
     // 560 x ANYh
-    ostringstream logoPath;
-    logoPath << path << "/assets/" << serviceType << "/" << library[index]["logo"].asString();
-    if (!logoTexture[i].loadFromFile(logoPath.str()))
+    ostringstream artPath;
+    artPath << path << "/assets/" << serviceType << "/" << library[index]["art"].asString();
+    if (!artTexture[i].loadFromFile(artPath.str()))
       cout << "Error" << endl;
-    logoTexture[i].setSmooth(true);
-    logoSprite[i].setTexture(logoTexture[i]);
+    artTexture[i].setSmooth(true);
+    artSprite[i].setTexture(artTexture[i]);
 
-    int calcHeight = i * boxHeight + (boxHeight / 2) - logoTexture[i].getSize().y / 2;
-    logoSprite[i].move(sf::Vector2f(logoLeft, calcHeight));
+    int calcHeight = i * boxHeight + (boxHeight / 2) - artTexture[i].getSize().y / 2;
+    int calcWidth = artTexture[i].getSize().x / 2;
+    artSprite[i].rotate(-5);
+    artSprite[i].move(sf::Vector2f(artLeft - calcWidth, calcHeight + 12));
 
     // Category
     ostringstream categoryPath;
@@ -392,6 +423,8 @@ int buildUI() {
       // Events
       bool joystickUp = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
       bool joystickDown = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == 100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
+      bool joystickLeft = (event.joystickMove.axis == sf::Joystick::X && event.joystickMove.position == 100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
+      bool joystickRight = (event.joystickMove.axis == sf::Joystick::X && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
       bool isSelectPressed = sf::Joystick::isButtonPressed(0, 8) || sf::Joystick::isButtonPressed(1, 8) || sf::Keyboard::isKeyPressed(sf::Keyboard::Enter);
       bool isCloseButtonPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Q) || sf::Joystick::isButtonPressed(0, 4) && sf::Joystick::isButtonPressed(1, 4);
       bool isCoinButtonPressed = sf::Joystick::isButtonPressed(0, 6) || sf::Joystick::isButtonPressed(1, 6);
@@ -468,10 +501,11 @@ int buildUI() {
       if (isSelectPressed)
       {
         isModalOpen = false;
-        // window.setSize(sf::Vector2u(2, 2));
         window.setVisible(false);
         string romPath;
         romPath.append(cmd.asString());
+        romPath.append(" ");
+        romPath.append(library[pageNumber]["emulator"].asString());
         romPath.append(" ");
         romPath.append(library[pageNumber]["rom"].asString());
         const char* command = romPath.c_str();
@@ -480,14 +514,11 @@ int buildUI() {
 
       // Close
       if (isCloseButtonPressed)
-        window.close();
-
-      // DEV: test char
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
       {
-        window.setSize(sf::Vector2u(0, 0));
+        window.close();
       }
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+
+      if (joystickRight)
       {
         service = Console;
         servicePath.str("");
@@ -499,7 +530,7 @@ int buildUI() {
         library = readJson(servicePath.str())["library"];
         buildUI();
       }
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+      if (joystickLeft)
       {
         service = Mame;
         servicePath.str("");
@@ -522,7 +553,7 @@ int buildUI() {
       window.draw(backgroundSprite[i]);
       window.draw(titleText[i]);
       window.draw(descriptionText[i]);
-      window.draw(logoSprite[i]);
+      window.draw(artSprite[i]);
       window.draw(categorySprite[i]);
     }
     window.draw(highlightRect);
@@ -541,6 +572,8 @@ int buildUI() {
       window.draw(selectLabel);
     }
     window.draw(pagination);
+    window.draw(gameTypeBox);
+    window.draw(gameTypeLabel);
     window.display();
   }
   return 0;
