@@ -4,6 +4,8 @@
 #include <jsoncpp/json/json.h>
 #include <chrono>
 #include <thread>
+#include <locale>
+#include <codecvt>
 #include <string>
 #include <sstream>
 #include <libgen.h>
@@ -254,6 +256,7 @@ int buildUI()
 
     // Description Text
     string longDesc = library[index]["description"].asString();
+
     size_t pos;
 
     for (size_t i = 0; i < longDesc.size(); i += wordWrap)
@@ -264,8 +267,11 @@ int buildUI()
         longDesc.at(n) = '\n';
       }
     }
+    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
+    std::wstring wideLongDesc = converter.from_bytes(longDesc);
+
     descriptionText[i].setFont(font);
-    descriptionText[i].setString(longDesc);
+    descriptionText[i].setString(wideLongDesc);
     descriptionText[i].setCharacterSize(28);
     descriptionText[i].setLineSpacing(1.2);
     descriptionText[i].setFillColor(sf::Color::White);
