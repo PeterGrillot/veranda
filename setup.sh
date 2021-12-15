@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-sudo apt install -y libretro-snes9x libretro-psx libretro-nestopia libretro-genesisplusgx
+sudo add-apt-repository ppa:libretro/stable && sudo apt-get update && sudo apt-get install -y retroarch libretro-snes9x libretro-psx libretro-nestopia libretro-genesisplusgx

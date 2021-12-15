@@ -31,7 +31,7 @@ string serviceName = "";
 sf::RenderWindow window(sf::VideoMode(), "Veranda", sf::Style::Fullscreen);
 
 // DEV
-// sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
+//sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
 
 int buildUI() {
 
@@ -66,7 +66,7 @@ int buildUI() {
   const float screenHeight = 1440;
   const int boxPerPage = 4;
   const float boxHeight = screenHeight / boxPerPage;
-  const int frameRate = 6;
+  const int frameRate = 3;
   // Window Settings
   window.setMouseCursorVisible(false);
   window.setKeyRepeatEnabled(false);
@@ -423,17 +423,12 @@ int buildUI() {
       // Events
       bool joystickUp = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
       bool joystickDown = (event.joystickMove.axis == sf::Joystick::Y && event.joystickMove.position == 100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
-      bool joystickLeft = (event.joystickMove.axis == sf::Joystick::X && event.joystickMove.position == 100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
-      bool joystickRight = (event.joystickMove.axis == sf::Joystick::X && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
-      bool isSelectPressed = sf::Joystick::isButtonPressed(0, 8) || sf::Joystick::isButtonPressed(1, 8) || sf::Keyboard::isKeyPressed(sf::Keyboard::Enter);
+      bool joystickLeft = (event.joystickMove.axis == sf::Joystick::X && event.joystickMove.position == -100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
+      bool joystickRight = (event.joystickMove.axis == sf::Joystick::X && event.joystickMove.position == 100) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right);
+      bool isSelectPressed = sf::Joystick::isButtonPressed(0, 8) || sf::Joystick::isButtonPressed(1, 8) || sf::Joystick::isButtonPressed(0, 0) || sf::Joystick::isButtonPressed(1, 0) || sf::Keyboard::isKeyPressed(sf::Keyboard::Enter);
       bool isCloseButtonPressed = sf::Keyboard::isKeyPressed(sf::Keyboard::Q) || sf::Joystick::isButtonPressed(0, 4) && sf::Joystick::isButtonPressed(1, 4);
-      bool isCoinButtonPressed = sf::Joystick::isButtonPressed(0, 6) || sf::Joystick::isButtonPressed(1, 6);
+      bool isModalOpenButtonPressed = sf::Joystick::isButtonPressed(0, 9) || sf::Joystick::isButtonPressed(1, 9);
 
-      // Check if Active
-      if (isWindowActive)
-      {
-        window.setVisible(true);
-      }
       // Next: Down
       if (
         joystickDown &&
@@ -471,7 +466,7 @@ int buildUI() {
 
       // Open Modal
       if (event.JoystickButtonReleased || event.KeyReleased) {
-        if (isCoinButtonPressed || event.key.code == 'o')
+        if (isModalOpenButtonPressed || event.key.code == 'o')
         {
           // Open Modal if close, else open
           if (isModalOpen == true)
@@ -501,7 +496,6 @@ int buildUI() {
       if (isSelectPressed)
       {
         isModalOpen = false;
-        window.setVisible(false);
         string romPath;
         romPath.append(cmd.asString());
         romPath.append(" ");
