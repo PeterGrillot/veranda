@@ -307,19 +307,40 @@ int buildUI() {
   controlTitle.setPosition(sf::Vector2f(200, 100));
 
   // Select Instruction
-  sf::Text selectInstructions;
-  selectInstructions.setFont(font);
-  selectInstructions.setString("Either player may press their Start button to begin game. To exit while playing, either player can press their Exit button.");
-  selectInstructions.setCharacterSize(32);
-  selectInstructions.setFillColor(sf::Color::White);
-  selectInstructions.setPosition(sf::Vector2f(200, 210));
-  // Select Instruction
+  sf::Text mainControlInstructions;
+  string mainControlInstructionsString = "Either player may press their Start button to begin game.";
+  if (service == Console)
+  {
+    mainControlInstructionsString.append(" To exit game, hold down Exit for 2 seconds. Left and Right shoulder buttons are Player and Coin buttons, respectively.");
+  }
+  if (service == Mame)
+  {
+    mainControlInstructionsString.append(" To exit game, press Exit.");
+  }
+  mainControlInstructions.setFont(font);
+  mainControlInstructions.setString(mainControlInstructionsString);
+  mainControlInstructions.setCharacterSize(32);
+  mainControlInstructions.setFillColor(sf::Color::White);
+  mainControlInstructions.setPosition(sf::Vector2f(200, 210));
+  // Instruction
+  sf::Text startLabel;
+  startLabel.setFont(font);
+  startLabel.setString("Start");
+  startLabel.setCharacterSize(42);
+  startLabel.setFillColor(sf::Color::White);
+  startLabel.setPosition(sf::Vector2f(990, 370));
+
   sf::Text selectLabel;
   selectLabel.setFont(font);
-  selectLabel.setString("Start                    Exit");
+  string selectInstructionsString = "Exit";
+  if (service == Console)
+  {
+    selectInstructionsString = "Exit (hold for 2 sec.)";
+  }
+  selectLabel.setString(selectInstructionsString);
   selectLabel.setCharacterSize(42);
   selectLabel.setFillColor(sf::Color::White);
-  selectLabel.setPosition(sf::Vector2f(990, 370));
+  selectLabel.setPosition(sf::Vector2f(1270, 370));
 
   for (size_t i = 0; i < buttonVectorSize; i++)
   {
@@ -512,24 +533,21 @@ int buildUI() {
         window.close();
       }
 
-      if (joystickRight)
+      // Change Service
+      if (joystickLeft || joystickRight)
       {
-        service = Console;
+        sound.play();
+        if (joystickLeft)
+        {
+          service = Mame;
+        }
+        if (joystickRight)
+        {
+          service = Console;
+        }
         servicePath.str("");
         servicePath.clear();
-        servicePath << path << "/console.json";
-
-        // Get JSON
-        cmd = readJson(servicePath.str())["cmd"].asString();
-        library = readJson(servicePath.str())["library"];
-        buildUI();
-      }
-      if (joystickLeft)
-      {
-        service = Mame;
-        servicePath.str("");
-        servicePath.clear();
-        servicePath << path << "/mame.json";
+        servicePath << path << "/" << serviceType << ".json";
 
         // Get JSON
         cmd = readJson(servicePath.str())["cmd"].asString();
@@ -562,7 +580,8 @@ int buildUI() {
         window.draw(controlLabel[i]);
       }
       window.draw(controlTitle);
-      window.draw(selectInstructions);
+      window.draw(mainControlInstructions);
+      window.draw(startLabel);
       window.draw(selectLabel);
     }
     window.draw(pagination);
