@@ -32,9 +32,13 @@ sf::RenderWindow window(sf::VideoMode(), "Veranda", sf::Style::Fullscreen);
 
 // DEV
 //sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
+void logError(string errorString)
+{
+  cout << "Error: " << errorString << endl;
+}
 
-int buildUI() {
-
+int buildUI()
+{
   char result[PATH_MAX];
   ssize_t count = readlink("/proc/self/exe", result, PATH_MAX);
   string path;
@@ -193,36 +197,53 @@ int buildUI() {
     ostringstream bgPath;
     bgPath << path << "/assets/" << serviceType << "/" << library[index]["bg"].asString();
     if (!backgroundTexture[i].loadFromFile(bgPath.str(), sf::IntRect(0, 0, screenWidth, boxHeight)))
-      cout << "Error" << endl;
-    backgroundSprite[i].scale(sf::Vector2f(backgroundScaleFactor, backgroundScaleFactor));
-    backgroundTexture[i].setSmooth(true);
-    backgroundSprite[i].setTexture(backgroundTexture[i]);
-    backgroundSprite[i].move(sf::Vector2f(0, boxHeight * i));
-    backgroundSprite[i].setTextureRect(sf::IntRect(0, 0, screenWidth, boxHeight / backgroundScaleFactor));
+    {
+      logError(bgPath.str());
+      backgroundSprite[i].setColor(sf::Color::Black);
+    }
+    else
+    {
+      backgroundSprite[i].scale(sf::Vector2f(backgroundScaleFactor, backgroundScaleFactor));
+      backgroundTexture[i].setSmooth(true);
+      backgroundSprite[i].setTexture(backgroundTexture[i]);
+      backgroundSprite[i].move(sf::Vector2f(0, boxHeight * i));
+      backgroundSprite[i].setTextureRect(sf::IntRect(0, 0, screenWidth, boxHeight / backgroundScaleFactor));
+    }
 
     // art
     // 560 x ANYh
     ostringstream artPath;
     artPath << path << "/assets/" << serviceType << "/" << library[index]["art"].asString();
     if (!artTexture[i].loadFromFile(artPath.str()))
-      cout << "Error" << endl;
-    artTexture[i].setSmooth(true);
-    artSprite[i].setTexture(artTexture[i]);
+    {
+      logError(bgPath.str());
+      artSprite[i].setColor(sf::Color::Black);
+    }
+    else
+    {
+      artTexture[i].setSmooth(true);
+      artSprite[i].setTexture(artTexture[i]);
 
-    int calcHeight = i * boxHeight + (boxHeight / 2) - artTexture[i].getSize().y / 2;
-    int calcWidth = artTexture[i].getSize().x / 2;
-    artSprite[i].rotate(-5);
-    artSprite[i].move(sf::Vector2f(artLeft - calcWidth, calcHeight + 12));
+      int calcHeight = i * boxHeight + (boxHeight / 2) - artTexture[i].getSize().y / 2;
+      int calcWidth = artTexture[i].getSize().x / 2;
+      artSprite[i].rotate(-5);
+      artSprite[i].move(sf::Vector2f(artLeft - calcWidth, calcHeight + 12));
+    }
 
     // Category
     ostringstream categoryPath;
     categoryPath << path << "/assets/category-" << library[index]["category"].asString() << ".png";
     if (!categoryTexture[i].loadFromFile(categoryPath.str()))
-      cout << "Error" << endl;
-    categoryTexture[i].setSmooth(true);
-    categorySprite[i].setTexture(categoryTexture[i]);
-
-    categorySprite[i].setPosition(sf::Vector2f(categoryIconLeft + 20, i * boxHeight + ((boxHeight - 100) / 2)));
+    {
+      logError(categoryPath.str());
+      categorySprite[i].setColor(sf::Color::Black);
+    }
+    else
+    {
+      categoryTexture[i].setSmooth(true);
+      categorySprite[i].setTexture(categoryTexture[i]);
+      categorySprite[i].setPosition(sf::Vector2f(categoryIconLeft + 20, i * boxHeight + ((boxHeight - 100) / 2)));
+    }
 
     // Title Text
     titleText[i].setFont(font);
