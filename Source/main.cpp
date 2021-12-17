@@ -10,13 +10,13 @@
 #include <unistd.h>
 #include <linux/limits.h>
 
-#include "ui.h"
-#include "readJson.h"
+#include "../Headers/ui.h"
+#include "../Headers/initializeText.h"
+#include "../Headers/readJson.h"
 
 using namespace std;
 
 int main()
 {
-
   buildUI();
 }
