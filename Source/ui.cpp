@@ -12,15 +12,26 @@
 #include <unistd.h>
 #include <linux/limits.h>
 
-#include "ui.h"
-#include "readJson.h"
+#include "../Headers/initializeText.h"
+#include "../Headers/ui.h"
+#include "../Headers/readJson.h"
 
 using namespace std;
 using namespace chrono;
 
+// Enums
 enum Service {
   Mame,
   Console
+};
+
+enum Direction
+{
+  Up,
+  Down,
+  FullUp,
+  FullDown,
+  None
 };
 
 // Declare First System
@@ -28,15 +39,13 @@ Service service = Mame;
 string serviceType = "";
 string serviceName = "";
 
-
 // Window
 sf::RenderWindow window(sf::VideoMode(), "Veranda", sf::Style::Fullscreen);
+//sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda"); // Testing
 
-// DEV
-//sf::RenderWindow window(sf::VideoMode(600, 400), "Veranda");
 void logError(string errorString)
 {
-  cout << "Error: " << errorString << endl;
+  cerr << "Error: " << errorString << endl;
 }
 
 int buildUI()
@@ -45,40 +54,44 @@ int buildUI()
   ssize_t count = readlink("/proc/self/exe", result, PATH_MAX);
   string path;
   if (count != -1)
+  {
     path = dirname(result);
-
+  }
   switch (service)
   {
   case Console:
     serviceType = "console";
     serviceName = "Console Games";
     break;
-
   case Mame:
     serviceType = "mame";
     serviceName = "Arcade Games";
     break;
-
-
   default:
     break;
   }
-
   const string fontFilename = path + "/RobotoCondensed-Regular.ttf";
   ostringstream servicePath;
   servicePath << path << "/" << serviceType << ".json";
 
+  // Layout
+  const int artLeft = 400;
+  const int textLeft = 820;
+  const int categoryIconLeft = 2300;
+  const int paginationLeft = categoryIconLeft + 24;
+  const int wordWrap = 110;
+  const int buttonVectorSize = 6;
+  const int backgroundScaleFactor = 2.1;
   const float screenWidth = 2560;
   const float screenHeight = 1440;
   const int boxPerPage = 4;
   const float boxHeight = screenHeight / boxPerPage;
   const int frameRate = 3;
+
   // Window Settings
   window.setMouseCursorVisible(false);
   window.setKeyRepeatEnabled(false);
-
-  // Speed
-  window.setFramerateLimit(frameRate * 5);
+  window.setFramerateLimit(frameRate * 5); // Speed
 
   // Sound
   sf::SoundBuffer buffer;
@@ -98,38 +111,21 @@ int buildUI()
 
   // Animation
   int frame = 0;
-  enum Direction
-  {
-    Up,
-    Down,
-    FullUp,
-    FullDown,
-    None
-  };
   int animationDirection = None;
-
   bool isModalOpen = false;
   bool isWindowActive = window.hasFocus();
 
-  // Layout
-  int artLeft = 400;
-  int textLeft = 820;
-  int categoryIconLeft = 2300;
-  int paginationLeft = categoryIconLeft + 24;
-  int wordWrap = 110;
-  int buttonVectorSize = 6;
-  int backgroundScaleFactor = 2.1;
-
-  // Color
-  sf::Color darkGreyColor = sf::Color(0, 0, 0, 190);
-  sf::Color darkPurpleColor = sf::Color(30, 8, 30, 240);
-  sf::Color lazerBlue = sf::Color(80, 255, 200);
+  // Colors
+  const sf::Color darkGreyColor = sf::Color(0, 0, 0, 190);
+  const sf::Color darkPurpleColor = sf::Color(30, 8, 30, 240);
+  const sf::Color lazerBlueColor = sf::Color(80, 255, 200);
+  const sf::Color whiteColor = sf::Color::White;
 
   //Declare a Font object
   sf::Font font;
   if (!font.loadFromFile(fontFilename))
   {
-    cerr << "Error: Cannot load font" << endl;
+    logError("Cannot load font");
   }
 
   // Black Background
@@ -143,7 +139,7 @@ int buildUI()
   sf::RectangleShape highlightRect;
   highlightRect.setSize(sf::Vector2f(screenWidth - (borderSize * 2), boxHeight - (borderSize * 2)));
   highlightRect.setFillColor(sf::Color::Transparent);
-  highlightRect.setOutlineColor(lazerBlue);
+  highlightRect.setOutlineColor(lazerBlueColor);
   highlightRect.setOutlineThickness(borderSize);
   highlightRect.setPosition(sf::Vector2f(borderSize, borderSize));
 
@@ -156,7 +152,7 @@ int buildUI()
   // resize it to 5 points
   gameTypeBox.setPointCount(4);
 
-  // define the points
+  // Draw trapazoid for Service Type label
   gameTypeBox.setPoint(0, sf::Vector2f(0, 0));
   gameTypeBox.setPoint(1, sf::Vector2f(gameTypeBoxWidth, gameTypeBoxWidth));
   gameTypeBox.setPoint(2, sf::Vector2f(gameTypeBoxWidth, gameTypeBoxHeight - gameTypeBoxWidth));
@@ -165,11 +161,7 @@ int buildUI()
   gameTypeBox.setFillColor(darkPurpleColor);
 
   // Game Type Label
-  sf::Text gameTypeLabel;
-  gameTypeLabel.setFont(font);
-  gameTypeLabel.setString(serviceName);
-  gameTypeLabel.setCharacterSize(54);
-  gameTypeLabel.setFillColor(lazerBlue);
+  sf::Text gameTypeLabel = initializeText(font, serviceName, lazerBlueColor, FontSizeTitle);
   size_t gameLabelSize = serviceName.length() * 13;
   gameTypeLabel.move(8, (screenHeight / 2) + gameLabelSize);
   gameTypeLabel.rotate(-90);
@@ -190,12 +182,10 @@ int buildUI()
   vector<sf::Texture> categoryTexture(jsonObjSize);
   vector<sf::Sprite> categorySprite(jsonObjSize);
 
-  // Build Each Game Page
+  // Build Each Game Slot
   for (size_t i = 0; i < jsonObjSize; i++)
   {
-    int screenWidthOffset = screenWidth * i;
-    // Background
-    // 1280w x 240
+    // Background Image: 1280w x 240
     ostringstream bgPath;
     bgPath << path << "/assets/" << serviceType << "/" << library[index]["bg"].asString();
     if (!backgroundTexture[i].loadFromFile(bgPath.str(), sf::IntRect(0, 0, screenWidth, boxHeight)))
@@ -212,8 +202,7 @@ int buildUI()
       backgroundSprite[i].setTextureRect(sf::IntRect(0, 0, screenWidth, boxHeight / backgroundScaleFactor));
     }
 
-    // art
-    // 560 x ANYh
+    // Box or Logo Art: 560 x 340
     ostringstream artPath;
     artPath << path << "/assets/" << serviceType << "/" << library[index]["art"].asString();
     if (!artTexture[i].loadFromFile(artPath.str()))
@@ -248,36 +237,26 @@ int buildUI()
     }
 
     // Title Text
-    titleText[i].setFont(font);
-    titleText[i].setString(library[index]["title"].asString());
-    titleText[i].setCharacterSize(54);
-    titleText[i].setFillColor(sf::Color::White);
+    titleText[i] = initializeText(font, library[index]["title"].asString(), whiteColor, FontSizeTitle);
+    titleText[i].scale(1, 1);
     titleText[i].move(sf::Vector2f(textLeft, (i * boxHeight) + 42));
 
     // Description Text
     string longDesc = library[index]["description"].asString();
-
     size_t pos;
-
     for (size_t i = 0; i < longDesc.size(); i += wordWrap)
     {
       int n = longDesc.rfind(' ', i);
-      if (n != std::string::npos)
+      if (n != string::npos)
       {
         longDesc.at(n) = '\n';
       }
     }
-    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> converter;
-    std::wstring wideLongDesc = converter.from_bytes(longDesc);
-
-    descriptionText[i].setFont(font);
-    descriptionText[i].setString(wideLongDesc);
-    descriptionText[i].setCharacterSize(28);
+    wstring_convert<codecvt_utf8_utf16<wchar_t>> converter;
+    wstring wideLongDesc = converter.from_bytes(longDesc);
+    descriptionText[i] = initializeText(font, wideLongDesc, whiteColor, FontSizeParagraph);
     descriptionText[i].setLineSpacing(1.2);
-    descriptionText[i].setFillColor(sf::Color::White);
     descriptionText[i].move(sf::Vector2f(textLeft, (i * boxHeight) + 138));
-
-    // Effect
     index++;
   }
 
@@ -292,15 +271,10 @@ int buildUI()
   guiView.setSize(sf::Vector2f(screenWidth, screenHeight));
 
   // Build pagination
-  sf::Text pagination;
-  pagination.setFont(font);
-  pagination.setCharacterSize(32);
-  pagination.setFillColor(sf::Color::White);
+  sf::Text pagination = initializeText(font, "", whiteColor, FontSizeSubtitle);
   pagination.move(sf::Vector2f(paginationLeft, screenHeight - 90));
 
-  /*
-  /*  Modal
-  */
+  // Modal
   sf::RectangleShape modalBackground;
   int modalMargin = 10;
   modalBackground.setFillColor(sf::Color(darkPurpleColor));
@@ -326,15 +300,10 @@ int buildUI()
   int textMarginTop = 370;
 
   // Game Title
-  sf::Text controlTitle;
-  controlTitle.setFont(font);
-  controlTitle.setString("");
-  controlTitle.setCharacterSize(72);
-  controlTitle.setFillColor(sf::Color::White);
-  controlTitle.setPosition(sf::Vector2f(200, 100));
+  sf::Text controlTitleText = initializeText(font, "", whiteColor, FontSizeHeading);
+  controlTitleText.setPosition(sf::Vector2f(200, 100));
 
   // Select Instruction
-  sf::Text mainControlInstructions;
   string mainControlInstructionsString = "Either player may press their Start button to begin game.";
   if (service == Console)
   {
@@ -344,38 +313,23 @@ int buildUI()
   {
     mainControlInstructionsString.append(" To exit game, press Exit.");
   }
-  mainControlInstructions.setFont(font);
-  mainControlInstructions.setString(mainControlInstructionsString);
-  mainControlInstructions.setCharacterSize(32);
-  mainControlInstructions.setFillColor(sf::Color::White);
+  sf::Text mainControlInstructions = initializeText(font, mainControlInstructionsString, whiteColor, FontSizeSubtitle);
   mainControlInstructions.setPosition(sf::Vector2f(200, 210));
-  // Instruction
-  sf::Text startLabel;
-  startLabel.setFont(font);
-  startLabel.setString("Start");
-  startLabel.setCharacterSize(42);
-  startLabel.setFillColor(sf::Color::White);
-  startLabel.setPosition(sf::Vector2f(990, 370));
 
-  sf::Text selectLabel;
-  selectLabel.setFont(font);
+  // Instruction
+  sf::Text startLabel = initializeText(font, "Start", whiteColor, FontSizeControlLabel);
+  startLabel.setPosition(sf::Vector2f(990, 370));
   string selectInstructionsString = "Exit";
   if (service == Console)
   {
     selectInstructionsString = "Exit (hold for 2 sec.)";
   }
-  selectLabel.setString(selectInstructionsString);
-  selectLabel.setCharacterSize(42);
-  selectLabel.setFillColor(sf::Color::White);
+  sf::Text selectLabel = initializeText(font, selectInstructionsString, whiteColor, FontSizeControlLabel);
   selectLabel.setPosition(sf::Vector2f(1270, 370));
 
   for (size_t i = 0; i < buttonVectorSize; i++)
   {
-    controlLabel[i].setFont(font);
-    controlLabel[i].setString("");
-    controlLabel[i].setCharacterSize(42);
-    controlLabel[i].setFillColor(sf::Color::White);
-
+    controlLabel[i] = initializeText(font, "", whiteColor, FontSizeControlLabel);
     if (i < 3) {
       if (i == 1) {
         controlLabel[i].setPosition(sf::Vector2f(textMarginLeft + (buttonLeftMultiplier * y1), 280 + textMarginTop));
@@ -397,35 +351,31 @@ int buildUI()
   }
 
   if (!controlTexture.loadFromFile(p1_bgPath, sf::IntRect(0, 0, 900, 509)))
-    cout << "Error" << endl;
+    logError(p1_bgPath);
   controlTexture.setSmooth(true);
   controlSprite.move(sf::Vector2f(700, 580));
   controlSprite.setTexture(controlTexture);
   controlSprite.scale(sf::Vector2f(buttonScale, buttonScale));
 
   if (!selectTexture.loadFromFile(select_bgPath, sf::IntRect(0, 0, 900, 509)))
-    cout << "Error" << endl;
+    logError(select_bgPath);
   selectTexture.setSmooth(true);
   selectSprite.move(sf::Vector2f(900, 420));
   selectSprite.setTexture(selectTexture);
   selectSprite.scale(sf::Vector2f(buttonScale, buttonScale));
 
-  /*
-  Window Running
-  */
+  // Window Running
   // Animate Highlight Box
   float delta = 120;
   bool isDeltaInc = true;
   while (window.isOpen())
   {
     sf::Event event;
-
     // Set Pagination
     string paginationText = to_string(pageNumber + 1) + " of " + to_string(pageSize + 1);
     pagination.setString(paginationText);
 
-    // Animate Direction
-    // Down
+    // Animate Direction: Down
     if (animationDirection == Down && frame < frameRate)
     {
       highlightRect.move(0, boxHeight / frameRate);
@@ -435,7 +385,7 @@ int buildUI()
       }
       frame++;
     }
-    // Up
+    // Animate Direction: Up
     else if (animationDirection == Up && frame < frameRate)
     {
       highlightRect.move(0, -1 * (boxHeight / frameRate));
@@ -445,14 +395,14 @@ int buildUI()
       }
       frame++;
     }
-    // Full Down
+    // Animate Direction: Full Down
     else if (animationDirection == FullDown && frame < frameRate)
     {
       highlightRect.move(0, (boxHeight * pageSize) / frameRate);
       mainView.move(0, (boxHeight * (pageSize - 3)) / frameRate);
       frame++;
     }
-    // Full Up
+    // Animate Direction: Full Up
     else if (animationDirection == FullUp && frame < frameRate)
     {
       highlightRect.move(0, -1 * (boxHeight * pageSize) / frameRate);
@@ -525,8 +475,7 @@ int buildUI()
           {
             isModalOpen = true;
           }
-
-          controlTitle.setString(library[pageNumber]["title"].asString() + " Controls");
+          controlTitleText.setString(library[pageNumber]["title"].asString() + " Controls");
           // Clear out old labels
           for (int i = 0; i < 6; i++)
           {
@@ -606,7 +555,7 @@ int buildUI()
       {
         window.draw(controlLabel[i]);
       }
-      window.draw(controlTitle);
+      window.draw(controlTitleText);
       window.draw(mainControlInstructions);
       window.draw(startLabel);
       window.draw(selectLabel);
