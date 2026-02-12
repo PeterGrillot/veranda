@@ -36,3 +36,16 @@ chmod +x ./scripts/compiler.sh
 # Run
 ./veranda-app/veranda
 ```
+
+## Sorting
+
+You can sort the JSON by changing the compile script. Also you can run ince compiled in the veranda-app folder.
+
+```bash
+./jsonSort console title
+./jsonSort mame title
+# How to
+./jsonSort {json} {key}
+```
+
+If you want to sort by something other than title, just change the key.
