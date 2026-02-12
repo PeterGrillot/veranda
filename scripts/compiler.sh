@@ -1,4 +1,6 @@
 #!/usr/bin/bash
+echo "Compiling jsonSort..."
+g++ -c -O2 -o Source/jsonSort.o Source/jsonSort.cpp -ljsoncpp
 g++ -c Source/main.cpp Source/initializeText.cpp Source/ui.cpp Source/readJson.cpp
 g++ main.o ui.o readJson.o initializeText.o -o veranda -ljsoncpp -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 rm main.o ui.o initializeText.o readJson.o

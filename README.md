@@ -1,23 +1,38 @@
-# veranda
+# Veranda
 
-A really quick and dirty MAME front end built in C++ and SFML. You will need MAME set up. Also I built it on linux, so system command would need to be updated for OS.
+### Game Launcher
 
-## C++ Deps
+Veranda is a lightweight MAME front end built in C++ using SFML. It provides a simple, fast interface for browsing and launching your MAME games but with some tweaking, it can launch anything! Designed for Linux, it relies on a local MAME or emulator setup and may require further adjustments for other operating systems.
 
+## Arcade
+
+![Arcade](./assets/screenshots/arcade.png?raw=true "Arcade")
+
+# Console
+
+![console](./assets/screenshots/console.png?raw=true "console")
+
+## Developement
+
+### C++ Dependancies
+
+```bash
+sudo apt install libsfml-dev libjsoncpp-dev
 ```
-jsoncpp
-sfml-graphics
-sfml-window
-sfml-system
-```
+
+Veranda uses the following libraries:
+
+- jsoncpp
+- sfml-graphics
+- sfml-window
+- sfml-system
 
 ## To Run:
 
 ```bash
-chmod +x ./compiler.sh
-./compiler.sh
+# Compile
+chmod +x ./scripts/compiler.sh
+./scripts/compiler.sh
+# Run
+./veranda-app/veranda
 ```
-
-## Sort JSON
-
-Node required, run `node jsonSort.js -<json name>`. Should probably just do it in c++, but this is quick and easy.
